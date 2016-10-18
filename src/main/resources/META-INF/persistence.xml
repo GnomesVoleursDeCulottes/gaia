@@ -12,5 +12,5 @@
       <property name="javax.persistence.jdbc.password" value="gaia"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
-  </persistence-unit> 
+  </persistence-unit>
 </persistence>
