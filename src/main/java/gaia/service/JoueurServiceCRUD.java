@@ -5,10 +5,13 @@
  */
 package gaia.service;
 
+import gaia.entity.Joueur;
+import org.springframework.data.repository.CrudRepository;
+
 /**
  *
  * @author admin
  */
-public interface JoueurServiceCRUD {
+public interface JoueurServiceCRUD extends CrudRepository<Joueur, Long>{
     
 }
