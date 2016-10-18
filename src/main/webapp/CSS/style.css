@@ -15,6 +15,11 @@ body{
     width: 100%;
     height: 100%;
     background-color: darkolivegreen;
+    background: url(../Images/golden-wheat-field.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1{
@@ -36,8 +41,8 @@ h1{
 }
 
 #contenu{
-    background-image: url('imageCss/champBle.jpg');
-    background-repeat: no-repeat;    
+    /*    background-image: url('imageCss/champBle.jpg');
+        background-repeat: no-repeat;    */
     width: 100%;
     height: 300px;
     text-align: center;
