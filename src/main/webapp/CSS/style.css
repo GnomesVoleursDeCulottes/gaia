@@ -8,6 +8,48 @@ and open the template in the editor.
     Author     : Laurent-LIM
 */
 
+/*
+        BALISE
+*/
+body{
+    width: 100%;
+    height: 100%;
+    background-color: darkolivegreen;
+}
+
 h1{
     text-align: center;
+    margin-top: 10%;
+    font-size: 5em;
+    color: darkmagenta;
 }
+
+
+/*
+        ID
+*/
+
+#menu{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+#contenu{
+    background-image: url('imageCss/champBle.jpg');
+    background-repeat: no-repeat;    
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}
+
+#pied{
+    width: 100%;
+    height: 10%;  
+    text-align: center;
+}
+
+
+/*
+        CLASS
+*/
