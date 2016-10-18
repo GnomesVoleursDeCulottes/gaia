@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,9 @@
         <br/>
         <div id="contenu">blabla</div>
         <br/>
-        <footer id="pied">yop</footer>
+        <footer id="pied">
+            <c:import url="_pied.jsp"></c:import>
+        </footer>
 
     </body>
 
