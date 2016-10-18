@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,11 +24,13 @@
         
         <h1>GAIA</h1>
         <br/>
-        <nav id="menu">pouet</nav>
+        <nav id="menu"></nav>
         <br/>
-        <div id="contenu">blabla</div>
+        <div id="contenu"></div>
         <br/>
-        <footer id="pied">yop</footer>
+        <footer id="pied">
+             <c:import url="_pied.jsp"></c:import>
+        </footer>
 
     </body>
 
