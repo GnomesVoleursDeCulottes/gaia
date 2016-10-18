@@ -23,8 +23,7 @@ public class JoueurController {
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
         public String home() {
-            
-            
+            service.findAll();
             return "home.jsp";
         }
 }
