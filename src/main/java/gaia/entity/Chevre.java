@@ -6,8 +6,6 @@
 package gaia.entity;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,28 +16,19 @@ import javax.persistence.Id;
  * @author admin
  */
 @Entity
-public class Joueur implements Serializable {
+public class Chevre implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String login;
-    
-    private String mdp;
+    private Long prochaineGestation;
     
     private Long prochainRepas;
     
-    private Long quantiteCarotte;
+    private Long prochainFromage;
     
-    private Long quantiteBle;
-    
-    private Long quantiteFromage;
-    
-   public List<Chevre> chevre;
-   
-   public Map<Long,Long> chevraux;
     
     
 
@@ -61,10 +50,10 @@ public class Joueur implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Joueur)) {
+        if (!(object instanceof Chevre)) {
             return false;
         }
-        Joueur other = (Joueur) object;
+        Chevre other = (Chevre) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -73,7 +62,7 @@ public class Joueur implements Serializable {
 
     @Override
     public String toString() {
-        return "gaia.entity.Joueur[ id=" + id + " ]";
+        return "gaia.entity.Chevre[ id=" + id + " ]";
     }
     
 }
