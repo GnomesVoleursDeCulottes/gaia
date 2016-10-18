@@ -13,6 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <img src="../../Images/mine_turtle.png" alt=""/>
+        <img src="../../Images/mine_turtle.png" alt="mine turtle"/>
+        <img src="../../Images/sablier.gif" alt=""/>
+        <img src="../../Images/chat.jpg" alt=""/>
     </body>
 </html>
