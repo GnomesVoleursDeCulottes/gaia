@@ -24,10 +24,14 @@
         
         <h1>GAIA</h1>
         <br/>
-        <nav id="menu">pouet</nav>
+        <nav id="menu"></nav>
         <br/>
-        <div id="contenu">blabla</div>
+        
+        <div id="contenu">
+            <c:import url="_connection.jsp"></c:import>
+        </div>
         <br/>
+        
         <footer id="pied">
             <c:import url="_pied.jsp"></c:import>
         </footer>
