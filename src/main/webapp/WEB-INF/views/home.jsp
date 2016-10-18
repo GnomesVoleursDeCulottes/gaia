@@ -17,5 +17,6 @@
         <img src="../../Images/mine_turtle.png" alt="mine turtle"/>
         <img src="../../Images/sablier.gif" alt=""/>
         <img src="../../Images/chat.jpg" alt=""/>
+        <div>Coucou fantay est dans la place</div>
     </body>
 </html>
