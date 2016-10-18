@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -29,7 +31,9 @@ public class Chevre implements Serializable {
     
     private Long prochainFromage;
     
-    
+    @ManyToOne
+    @JoinColumn(name="ID_JOUEUR")
+    private Joueur leJoueur;
     
 
     public Long getId() {
