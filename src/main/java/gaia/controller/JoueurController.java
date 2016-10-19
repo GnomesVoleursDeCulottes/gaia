@@ -31,7 +31,7 @@ public class JoueurController {
         return "index.jsp";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/ajouterJ", method = RequestMethod.POST)
     public String ajouterMdp(@ModelAttribute("nouveauJoueur") Joueur joueur, HttpSession s) {
 
         Joueur leJoueur = service.findOneByLogin(joueur.getLogin());
