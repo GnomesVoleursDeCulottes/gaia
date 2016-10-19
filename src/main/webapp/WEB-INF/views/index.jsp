@@ -6,6 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,17 +23,35 @@
     </head>
 
     <body>
-        
-        <h1>GAIA</h1>
+
+        <h1 id="titre">GAIA</h1>
         <br/>
+        
         <nav id="menu"></nav>
         <br/>
-        
-        <div id="contenu">
-            <c:import url="_connection.jsp"></c:import>
+
+        <div id="connection">
+
+            <form:form class="centre" name="formulaire" modelAttribute="formulaire">
+
+                <div>
+                    <label for="pseudo" >Pseudo :</label>
+                    <form:input id="pseudo" path="pseudo"/>
+                </div>
+                <br/>
+                <div>
+                    <label for="mdp">Mot de passe :</label>
+                    <form:input id="mdp" path="mdp"/>
+                </div>
+                <br/>
+
+                <input type="submit" value="Valider" />
+
+            </form:form>
+
         </div>
+
         <br/>
-        
         <footer id="pied">
             <c:import url="_pied.jsp"></c:import>
         </footer>

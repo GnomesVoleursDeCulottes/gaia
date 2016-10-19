@@ -22,7 +22,7 @@
 
     <body>
         
-        <h1>GAIA</h1>
+        <h1 id="titre">GAIA</h1>
         <br/>
         <nav id="menu"></nav>
         <br/>

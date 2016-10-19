@@ -25,11 +25,11 @@ public class Chevre implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private Long prochaineGestation = 0L;//TMP need cycle
+    private Long prochaineGestation;
     
-    private Long prochainRepas = 4L;//TMP Need cycle
+    private Long prochainRepas;
     
-    private Long prochainFromage = 6L;//TMP Need Cycle
+    private Long prochainFromage;
     
     @ManyToOne
     @JoinColumn(name="ID_JOUEUR")

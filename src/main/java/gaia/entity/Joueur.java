@@ -39,7 +39,7 @@ public class Joueur implements Serializable {
     @Column(nullable = false)
     private String mdp;
 
-    private Long prochainRepas = 4L;//TMP tant que cycle n'exite pas
+    private Long prochainRepas;
 
     private Long quantiteCarotte = 2L;
 
