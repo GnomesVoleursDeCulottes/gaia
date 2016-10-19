@@ -21,15 +21,15 @@
     </head>
 
     <body>
-        
-        <h1 id="titre">GAIA</h1>
-        <br/>
-        <nav id="menu"></nav>
-        <br/>
-        <div id="contenu"></div>
-        <br/>
-        <footer id="pied">
-             <c:import url="_pied.jsp"></c:import>
+        <c:import url="_menu.jsp"></c:import>
+            <h1 id="titre">GAIA</h1>
+            <br/>
+            <nav id="menu"></nav>
+            <br/>
+            <div id="contenu"></div>
+            <br/>
+            <footer id="pied">
+            <c:import url="_pied.jsp"></c:import>
         </footer>
 
     </body>

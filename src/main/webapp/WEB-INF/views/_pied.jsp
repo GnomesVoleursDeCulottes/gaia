@@ -1,15 +1,15 @@
-<table>
+<table id="piedPage">
     <tr>
         
         <td></td>
-        <td>Scénario :</td>
-        <td>Thomas QUIQUOTTE</td>
-        <td></td>
+        <td class="cellulePied">Scénario :</td>
+        <td class="cellulePied">Thomas QUIQUOTTE</td>
+        <td class="cellulePied"></td>
     </tr>
     <tr>
-        <td>Développeur :</td>
-        <td>Nordine ITOUMAÏNE</td>
-        <td>Julien DUTHOIT</td>
-        <td>Laurent COLLART</td>
+        <td class="cellulePied">Développeur :</td>
+        <td class="cellulePied">Nordine ITOUMAÏNE</td>
+        <td class="cellulePied">Julien DUTHOIT</td>
+        <td class="cellulePied">Laurent COLLART</td>
     </tr>
 </table>

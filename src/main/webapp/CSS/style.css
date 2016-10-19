@@ -20,7 +20,7 @@ nav{
     margin-right: 15px
 }
 
-#pied, .centre{
+.centre{
     text-align: center;
 }
 
@@ -55,14 +55,13 @@ nav{
 
 
 
-
 /* 
         CSS PIED DE PAGE
 
 */
 
-table{
-    margin-top: 10%;
+#piedPage{
+    margin: auto;
     width: 80%;
     text-align: center;
     font-size: 1.3em;
@@ -71,12 +70,13 @@ table{
     border-spacing: 0px 15px;
 }
 
-td{
+.cellulePied{
     width: 25%;
 }
 
 footer{
-    background-color: black;
+    background-color: #4391d9;
+    margin: auto;
 }
 
 
@@ -105,14 +105,14 @@ footer{
         CSS DE GAIADASHBOARD
 */
 
-#sousmenu{
+#sousMenu{
     padding: 10px;
     text-align: center;
 }
 
 #contenu{
     margin: auto;
-    background-color: teal;
+    background-color: #4391d9;
     width: 80%;
 }
 
@@ -122,4 +122,48 @@ footer{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+#ligneVie{
+    width: 100%;
+    height: 100px;
+}
+
+#ligneVieJoueur, #ligneVieMouton{
+    width: 50%;
+}
+
+
+.ressource{
+    width: 400px;
+}
+
+/*** css du stock du joueur ***/
+
+#tableaux{
+    background-color: #4391d9;
+    height: 300px;
+}
+
+#stock{
+    width: 45%;
+    margin-left: 3%;
+    float: left;
+}
+
+.traitRessource{
+    border: 3px double coral;   
+}
+
+/*** css des plantations du joueurs ***/
+
+#plantation{
+    width: 45%;
+    margin-left: 4%;
+    float: left;
+}
+
+.traitPlantation{
+    border: 3px double coral;  
+}
+
 
