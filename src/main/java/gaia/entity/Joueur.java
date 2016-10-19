@@ -6,6 +6,7 @@
 package gaia.entity;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.CollectionTable;
@@ -52,19 +53,19 @@ public class Joueur implements Serializable {
     @MapKeyColumn(name="CYCLE_MATURITE")
     @Column(name="NB_MATURE")
     @CollectionTable(name="CHEVRAUX", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> chevraux;
+    public Map<Long, Long> chevraux = new HashMap();
 
     @ElementCollection
     @MapKeyColumn(name="CYCLE_RECOLTE")
     @Column(name="NB_RECOLTE")
     @CollectionTable(name="CAROTTE_PLANTEE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> carottePlantee;
+    public Map<Long, Long> carottePlantee = new HashMap();;
     
     @ElementCollection
     @MapKeyColumn(name="CYCLE_RECOLTE")
     @Column(name="NB_RECOLTE")
     @CollectionTable(name="BLE_PLANTE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> blePlante;
+    public Map<Long, Long> blePlante = new HashMap();;
     
     public Long getId() {
         return id;
@@ -99,4 +100,72 @@ public class Joueur implements Serializable {
         return "gaia.entity.Joueur[ id=" + id + " ]";
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public Long getProchainRepas() {
+        return prochainRepas;
+    }
+
+    public void setProchainRepas(Long prochainRepas) {
+        this.prochainRepas = prochainRepas;
+    }
+
+    public Long getQuantiteCarotte() {
+        return quantiteCarotte;
+    }
+
+    public void setQuantiteCarotte(Long quantiteCarotte) {
+        this.quantiteCarotte = quantiteCarotte;
+    }
+
+    public Long getQuantiteBle() {
+        return quantiteBle;
+    }
+
+    public void setQuantiteBle(Long quantiteBle) {
+        this.quantiteBle = quantiteBle;
+    }
+
+    public Long getQuantiteFromage() {
+        return quantiteFromage;
+    }
+
+    public void setQuantiteFromage(Long quantiteFromage) {
+        this.quantiteFromage = quantiteFromage;
+    }
+
+    public List<Chevre> getChevres() {
+        return chevres;
+    }
+
+    public Map<Long, Long> getChevraux() {
+        return chevraux;
+    }
+
+    public Map<Long, Long> getCarottePlantee() {
+        return carottePlantee;
+    }
+
+    public Map<Long, Long> getBlePlante() {
+        return blePlante;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    
 }
