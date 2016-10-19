@@ -76,7 +76,7 @@ public class LuneService {
                 for (long i = 0L; i < joueur.getChevraux().get(lune); i++){
                     Chevre nouvelleChevre = new Chevre();
                     nouvelleChevre.setLeJoueur(joueur);
-                    nouvelleChevre.setProchainAll(lune + 6L, lune + 4L, lune);
+                    nouvelleChevre.setProchainAll(lune);
                     serviceChevre.save(nouvelleChevre);
                     joueur.getChevres().add(nouvelleChevre);
                 }
