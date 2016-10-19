@@ -101,5 +101,9 @@ public class Chevre implements Serializable {
         this.leJoueur = leJoueur;
     }
     
-    
+    public void setProchainAll(Long fromage, Long repas, Long gestation){
+        this.prochainFromage = fromage;
+        this.prochainRepas = repas;
+        this.prochaineGestation = gestation;
+    }
 }
