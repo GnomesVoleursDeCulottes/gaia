@@ -5,7 +5,9 @@
  */
 package gaia.controller;
 
+import gaia.entity.Chevre;
 import gaia.entity.Joueur;
+import gaia.service.ChevreServiceCRUD;
 import gaia.service.JoueurServiceCRUD;
 import gaia.service.LuneService;
 import javax.servlet.http.HttpSession;
@@ -25,9 +27,12 @@ public class JoueurController {
 
     @Autowired
     private JoueurServiceCRUD service;
+    @Autowired
+    private ChevreServiceCRUD serviceChevre;
 
+    @Autowired
     private LuneService serviceLune;
-    
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String ajouterGET(Model model) {
         model.addAttribute("JoueurAttr", new Joueur());
@@ -38,21 +43,34 @@ public class JoueurController {
     public String ajouterMdp(@ModelAttribute("JoueurAttr") Joueur joueur, HttpSession s) {
 
         Joueur leJoueur = service.findOneByLogin(joueur.getLogin());
-        if (leJoueur == null){
-            
+        if (leJoueur == null) {
+
             //ajouter valeur de départ dépendant des cycles
             leJoueur = joueur;
-            service.save(leJoueur);
+            Chevre chevre = new Chevre();
+
             
+            Long laLune = serviceLune.getLune();
+            leJoueur.setProchainRepas(laLune + 4L);
+            chevre.setProchainAll(laLune);
+            service.save(leJoueur);
+            chevre.setLeJoueur(leJoueur);
+            serviceChevre.save(chevre);
+            leJoueur.getChevres().add(chevre);
+            service.save(leJoueur);
+
+        } else if (leJoueur.getMdp().equals(joueur.getMdp()))  {
+            throw new RuntimeException("Vous avez entré un mauvais mot de passe, le système vous réclamera 5 euro ===> Cordialement");
         }
-           
+
         s.setAttribute("idUser", leJoueur.getId());
-        
+
         return "gaiaDashboard.jsp";
+
     }
-    
+
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String jeu(){
+    public String jeu() {
         return "gaiaDashboard.jsp";
     }
 }
