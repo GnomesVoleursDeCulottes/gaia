@@ -23,4 +23,10 @@ public class LuneService {
         System.out.println( "*** LUNE : " + lune );
         lune++;
     }
+
+    public long getLune() {
+        return lune;
+    }
+    
+    
 }
