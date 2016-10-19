@@ -18,7 +18,7 @@ public class LuneService {
     private long lune=0;
     
     @Scheduled(fixedDelay = 300000)
-    public void inscrementeLune(){
+    public void incrementeLune(){
         
         System.out.println( "*** LUNE : " + lune );
         lune++;
