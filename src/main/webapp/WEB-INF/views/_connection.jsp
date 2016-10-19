@@ -1,13 +1,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="connection">
-    <form class="centre">
-        <label>Pseudo :</label>
-        <input type="text"/>
+
+    <form class="centre" name="formulaire" method="post">
+
+        <div>
+            <label for="pseudo" >Pseudo :</label>
+            <input id="pseudo" type="text"/>
+        </div>
         <br/>
-        <label>Mot de passe :</label>
-        <input type="password"/>
+        <div>
+            <label for="mdp">Mot de passe :</label>
+            <input id="mdp" type="password"/>
+        </div>
         <br/>
-        <input class="espace" type="submit" value="Valider" />
+
+        <input type="submit" value="Valider" />
+
     </form>
+
 </div>
