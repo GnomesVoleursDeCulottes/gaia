@@ -17,13 +17,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class JoueurController {
-    
+
     @Autowired
     private JoueurServiceCRUD service;
-    
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
-        public String home() {
-            service.findAll();
-            return "index.jsp";
-        }
+    public String home() {
+        service.findAll();
+        return "index.jsp";
+    }
+    
+    @RequestMapping(value = "/jeu", method = RequestMethod.GET)
+    public String jeu(){
+        return "gaiaDashboard.jsp";
+    }
+
 }
