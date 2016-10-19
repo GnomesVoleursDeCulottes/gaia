@@ -16,8 +16,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface JoueurServiceCRUD extends CrudRepository<Joueur, Long>{
     
     public Joueur findOneByLogin(String login);
-    public List<Joueur> findAllByLoginOrderByDesc();
-    
-     public List<Joueur> findAllByMDPOrderByDesc();
     
 }
