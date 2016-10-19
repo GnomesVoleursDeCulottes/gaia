@@ -68,5 +68,38 @@ public class Chevre implements Serializable {
     public String toString() {
         return "gaia.entity.Chevre[ id=" + id + " ]";
     }
+
+    public Long getProchaineGestation() {
+        return prochaineGestation;
+    }
+
+    public void setProchaineGestation(Long prochaineGestation) {
+        this.prochaineGestation = prochaineGestation;
+    }
+
+    public Long getProchainRepas() {
+        return prochainRepas;
+    }
+
+    public void setProchainRepas(Long prochainRepas) {
+        this.prochainRepas = prochainRepas;
+    }
+
+    public Long getProchainFromage() {
+        return prochainFromage;
+    }
+
+    public void setProchainFromage(Long prochainFromage) {
+        this.prochainFromage = prochainFromage;
+    }
+
+    public Joueur getLeJoueur() {
+        return leJoueur;
+    }
+
+    public void setLeJoueur(Joueur leJoueur) {
+        this.leJoueur = leJoueur;
+    }
+    
     
 }
