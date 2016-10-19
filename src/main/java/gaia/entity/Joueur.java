@@ -6,6 +6,7 @@
 package gaia.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,16 +39,16 @@ public class Joueur implements Serializable {
     @Column(nullable = false)
     private String mdp;
 
-    private Long prochainRepas;
+    private Long prochainRepas = 4L;//TMP tant que cycle n'exite pas
 
-    private Long quantiteCarotte;
+    private Long quantiteCarotte = 2L;
 
-    private Long quantiteBle;
+    private Long quantiteBle = 3L;
 
-    private Long quantiteFromage;
+    private Long quantiteFromage =2L; 
 
     @OneToMany(mappedBy="leJoueur")
-    public List<Chevre> chevres;
+    public List<Chevre> chevres = new ArrayList<>();
 
     @ElementCollection
     @MapKeyColumn(name="CYCLE_MATURITE")
