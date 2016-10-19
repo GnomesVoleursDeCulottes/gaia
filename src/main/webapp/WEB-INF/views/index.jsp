@@ -32,11 +32,11 @@
 
         <div id="connection">
 
-            <form:form class="centre" name="formulaire" modelAttribute="formulaire">
+            <form:form class="centre" name="formulaire" modelAttribute="JoueurAttr" action="ajouterJ">
 
                 <div>
                     <label for="pseudo" >Pseudo :</label>
-                    <form:input id="pseudo" path="pseudo"/>
+                    <form:input id="pseudo" path="login"/>
                 </div>
                 <br/>
                 <div>
