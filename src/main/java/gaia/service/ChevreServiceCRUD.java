@@ -6,6 +6,7 @@
 package gaia.service;
 
 import gaia.entity.Chevre;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface ChevreServiceCRUD extends CrudRepository<Chevre, Long>{
+    
+    public List<Chevre> findAllByIdOrderByDesc();
     
 }
