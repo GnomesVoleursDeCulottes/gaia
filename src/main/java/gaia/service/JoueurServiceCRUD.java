@@ -6,6 +6,7 @@
 package gaia.service;
 
 import gaia.entity.Joueur;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,10 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface JoueurServiceCRUD extends CrudRepository<Joueur, Long>{
+    
+    public Joueur findOneByLogin(String login);
+    public List<Joueur> findAllByLoginOrderByDesc();
+    
+     public List<Joueur> findAllByMDPOrderByDesc();
     
 }
