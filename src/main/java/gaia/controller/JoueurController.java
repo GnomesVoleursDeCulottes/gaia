@@ -59,7 +59,7 @@ public class JoueurController {
             leJoueur.getChevres().add(chevre);
             service.save(leJoueur);
 
-        } else if (leJoueur.getMdp().equals(joueur.getMdp()))  {
+        } else if (! leJoueur.getMdp().equals(joueur.getMdp()))  {
             throw new RuntimeException("Vous avez entré un mauvais mot de passe, le système vous réclamera 5 euro ===> Cordialement");
         }
 
