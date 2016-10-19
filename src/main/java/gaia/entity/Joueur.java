@@ -48,25 +48,25 @@ public class Joueur implements Serializable {
     private Long quantiteFromage =2L; 
 
     @OneToMany(mappedBy="leJoueur")
-    public List<Chevre> chevres = new ArrayList<>();
+    private List<Chevre> chevres = new ArrayList<>();
 
     @ElementCollection
     @MapKeyColumn(name="CYCLE_MATURITE")
     @Column(name="NB_MATURE")
     @CollectionTable(name="CHEVRAUX", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> chevraux = new HashMap();
+    private Map<Long, Long> chevraux = new HashMap();
 
     @ElementCollection
     @MapKeyColumn(name="CYCLE_RECOLTE")
     @Column(name="NB_RECOLTE")
     @CollectionTable(name="CAROTTE_PLANTEE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> carottePlantee = new HashMap();;
+    private Map<Long, Long> carottePlantee = new HashMap();;
     
     @ElementCollection
     @MapKeyColumn(name="CYCLE_RECOLTE")
     @Column(name="NB_RECOLTE")
     @CollectionTable(name="BLE_PLANTE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
-    public Map<Long, Long> blePlante = new HashMap();;
+    private Map<Long, Long> blePlante = new HashMap();;
     
     public Long getId() {
         return id;
