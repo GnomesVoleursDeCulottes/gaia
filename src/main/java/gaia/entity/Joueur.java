@@ -8,10 +8,16 @@ package gaia.entity;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,25 +30,40 @@ public class Joueur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private String login;
-    
-    private String mdp;
-    
-    private Long prochainRepas;
-    
-    private Long quantiteCarotte;
-    
-    private Long quantiteBle;
-    
-    private Long quantiteFromage;
-    
-   public List<Chevre> chevre;
-   
-   public Map<Long,Long> chevraux;
-    
-    
 
+    private String login;
+
+    private String mdp;
+
+    private Long prochainRepas;
+
+    private Long quantiteCarotte;
+
+    private Long quantiteBle;
+
+    private Long quantiteFromage;
+
+    @OneToMany(mappedBy="leJoueur")
+    public List<Chevre> chevres;
+
+    @ElementCollection
+    @MapKeyColumn(name="CYCLE_MATURITE")
+    @Column(name="NB_MATURE")
+    @CollectionTable(name="CHEVRAUX", joinColumns=@JoinColumn(name="JOUEUR_ID"))
+    public Map<Long, Long> chevraux;
+
+    @ElementCollection
+    @MapKeyColumn(name="CYCLE_RECOLTE")
+    @Column(name="NB_RECOLTE")
+    @CollectionTable(name="CAROTTE_PLANTEE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
+    public Map<Long, Long> carottePlantee;
+    
+    @ElementCollection
+    @MapKeyColumn(name="CYCLE_RECOLTE")
+    @Column(name="NB_RECOLTE")
+    @CollectionTable(name="BLE_PLANTE", joinColumns=@JoinColumn(name="JOUEUR_ID"))
+    public Map<Long, Long> blePlante;
+    
     public Long getId() {
         return id;
     }
@@ -75,5 +96,5 @@ public class Joueur implements Serializable {
     public String toString() {
         return "gaia.entity.Joueur[ id=" + id + " ]";
     }
-    
+
 }
