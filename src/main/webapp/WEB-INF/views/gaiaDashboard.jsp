@@ -21,6 +21,8 @@
     </head>
 
     <body>
+        
+        <c:import url="_menu.jsp"></c:import>
 
        <h1 id="titre">GAIA</h1>
 
@@ -31,15 +33,13 @@
             <h1>Cycle de Lune :</h1>
             <br/>
             
-            <nav id="menu">
+            <div id="sousmenu">
                 <input id="seNourrir" type="button" value="Se nourrir" />
                 <input id="nourrirChevre" type="button" value="Nourrir chèvre" />
                 <input id="planter" type="button" value="Planter" />
                 <input id="reproduction" type="button" value="Reproduction" />
                 <input id="banque" type="button" value="Banque" />
-                <input id="classement" type="button" value="Classement" />
-                <input id="deconnection" type="button" value="Déconnection" />
-            </nav>
+            </div>
             
         </div>
         
