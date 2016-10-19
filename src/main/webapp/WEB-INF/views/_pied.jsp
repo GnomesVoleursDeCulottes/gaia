@@ -1,9 +1,9 @@
 <table>
     <tr>
         
-        <td class="droite">Scénario :</td>
         <td></td>
-        <td class="gauche">Thomas QUIQUOTTE</td>
+        <td>Scénario :</td>
+        <td>Thomas QUIQUOTTE</td>
         <td></td>
     </tr>
     <tr>

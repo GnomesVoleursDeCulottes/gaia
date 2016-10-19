@@ -26,6 +26,10 @@
 
         <br/>
         <div id="contenu">
+            <br/>
+            
+            <h1>Cycle de Lune :</h1>
+            <br/>
             
             <nav id="menu">
                 <input id="seNourrir" type="button" value="Se nourrir" />

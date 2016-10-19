@@ -27,7 +27,10 @@ body{
     text-align: left;
 }
 
-
+h1{
+    color: darkmagenta;
+    text-align: center;
+}
 
 /* 
         CSS PIED DE PAGE
@@ -41,6 +44,7 @@ table{
     font-size: 1.3em;
     font-weight: bold;
     color: darkmagenta;
+    border-spacing: 0px 15px;
 }
 
 td{
@@ -83,7 +87,7 @@ nav{
 
 #contenu{
     margin: auto;
-    background-color: black;
+    background-color: teal;
     width: 80%;
 }
 
