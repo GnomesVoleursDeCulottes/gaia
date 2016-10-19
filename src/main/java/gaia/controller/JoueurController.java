@@ -32,7 +32,7 @@ public class JoueurController {
     }
 
     @RequestMapping(value = "/ajouterJ", method = RequestMethod.POST)
-    public String ajouterMdp(@ModelAttribute("nouveauJoueur") Joueur joueur, HttpSession s) {
+    public String ajouterMdp(@ModelAttribute("JoueurAttr") Joueur joueur, HttpSession s) {
 
         Joueur leJoueur = service.findOneByLogin(joueur.getLogin());
         if (leJoueur == null){
