@@ -32,7 +32,7 @@
 
         <div id="connection">
 
-            <form:form class="centre" name="formulaire" modelAttribute="JoueurAttr" action="ajouterJ">
+            <form:form class="centre" name="formulaire" modelAttribute="JoueurAttr" action="dashboard">
 
                 <div>
                     <label for="pseudo" >Pseudo :</label>

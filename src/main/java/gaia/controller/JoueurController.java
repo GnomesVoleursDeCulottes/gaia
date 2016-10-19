@@ -7,6 +7,7 @@ package gaia.controller;
 
 import gaia.entity.Joueur;
 import gaia.service.JoueurServiceCRUD;
+import gaia.service.LuneService;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,13 +26,15 @@ public class JoueurController {
     @Autowired
     private JoueurServiceCRUD service;
 
+    private LuneService serviceLune;
+    
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String ajouterGET(Model model) {
         model.addAttribute("JoueurAttr", new Joueur());
         return "index.jsp";
     }
 
-    @RequestMapping(value = "/ajouterJ", method = RequestMethod.POST)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
     public String ajouterMdp(@ModelAttribute("JoueurAttr") Joueur joueur, HttpSession s) {
 
         Joueur leJoueur = service.findOneByLogin(joueur.getLogin());
@@ -45,10 +48,10 @@ public class JoueurController {
            
         s.setAttribute("idUser", leJoueur.getId());
         
-        return "index.jsp";
+        return "gaiaDashboard.jsp";
     }
     
-    @RequestMapping(value = "/jeu", method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String jeu(){
         return "gaiaDashboard.jsp";
     }
