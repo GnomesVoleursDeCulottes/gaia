@@ -7,6 +7,7 @@ package gaia.service;
 
 import gaia.entity.Chevre;
 import gaia.entity.Joueur;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -109,6 +110,33 @@ public class LuneService {
         }
         leJoueur.getCarottePlantee().put(lune + 6L, dejaPlante + (nbPlante * 3L) + (long) Math.ceil(Math.random() * nbPlante));
 
+        service.save(leJoueur);
+    }
+    
+    
+    ///Can be change (save la liste entière)
+    public void faireSeReproduire(Long idJoueur, Long nbAFaireNaitre){
+        Joueur leJoueur = service.findOne(idJoueur);
+        
+        List<Chevre> chevresAReproduire = new ArrayList();
+        for (Chevre chevre : leJoueur.getChevres()){
+            if (chevre.getProchaineGestation() <= lune){
+                chevresAReproduire.add(chevre);
+            }
+        }
+        
+        int i = 0;
+        if (chevresAReproduire.size() < nbAFaireNaitre){
+            throw new RuntimeException("il n'y a pas assez de chevres pour faire " + nbAFaireNaitre + " bébés !");
+        }
+        for (Chevre chevre : chevresAReproduire){
+            if (i < nbAFaireNaitre){
+                chevre.setProchaineGestation(lune + 12L);
+                serviceChevre.save(chevre);
+                i++;
+            }
+        }
+        leJoueur.getChevraux().put(lune+12L, nbAFaireNaitre);
         service.save(leJoueur);
     }
 }
