@@ -44,9 +44,9 @@
 
             <div id="sousMenu">
                 <input id="seNourrir" type="button" value="Se nourrir" />
-                <input id="nourrirChevre" type="button" value="Nourrir chèvre" />
-                <input id="planter" type="button" value="Planter" />
-                <input id="reproduction" type="button" value="Reproduction" />
+                
+                
+                
                 <input id="banque" type="button" value="Banque" />
             </div>
 
@@ -61,7 +61,7 @@
             <div id="tableaux">
                 <table id="stock">
                     <tr>
-                        <th class="centre" colspan="2">STOCK JOUEUR</th>
+                        <th class="centre" colspan="3">STOCK JOUEUR</th>
                     </tr>
                     <tr>
                         <td class="ressource traitRessource centre">Ressource</td>
@@ -72,7 +72,7 @@
 
                     <table id="plantation">
                         <tr>
-                            <th class="centre" colspan="2">PLANTATION</th>
+                            <th class="centre" colspan="3">PLANTATION</th>
                         </tr>
                         <tr>
                             <td class="ressource traitPlantation centre">Ressource</td>
