@@ -75,7 +75,12 @@ public class JoueurController {
         return "gaiaDashboard.jsp";
     }
 
-    
+    @RequestMapping(value = "/classement", method = RequestMethod.GET)
+    public String clasement(Model model){
+       
+        model.addAttribute("lesJoueurs", service.findAllByOrderByQuantiteBleDesc());
+        return "classement.jsp";
+    }
     
     
 }
