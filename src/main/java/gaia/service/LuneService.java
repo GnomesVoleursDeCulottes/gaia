@@ -28,11 +28,11 @@ public class LuneService {
 
     @Scheduled(fixedDelay = 10000)
     public void incrementeLune() {
-
+        lune++;
         System.out.println("*** FIN LUNE : " + (lune - 1L) + " ***");
         cycleDeVie();
         System.out.println("*** CYCLE LUNE : " + lune + " OK ***");
-        lune++;
+       
 
     }
 
