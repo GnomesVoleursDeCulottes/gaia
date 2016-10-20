@@ -81,10 +81,16 @@ public class JoueurController {
     }
 
     @RequestMapping(value = "/classement", method = RequestMethod.GET)
-    public String clasement(Model model) {
+    public String classement(Model model) {
 
         model.addAttribute("lesJoueurs", service.findAllByOrderByQuantiteBleDesc());
         return "classement.jsp";
     }
 
+    @RequestMapping(value = "/ressource", method = RequestMethod.GET)
+    public String ressources(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("joueur", service.findOne(joueur));
+        return "_ressource.jsp";
+    }
 }
