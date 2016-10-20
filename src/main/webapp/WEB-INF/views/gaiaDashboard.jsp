@@ -23,12 +23,6 @@
 
         <script type="text/javascript">
 
-
-            function cycleLune() {
-                $('h1').append('Cycle de Lune : ${lune}');
-            }
-
-
         </script>
 
     </head>
@@ -42,8 +36,11 @@
             <br/>
             <div id="contenu">
                 <br/>
-                <h1><!--cycle de lune gere par js ne pas remplir--></h1>
+                
+                <c:import url="_cycle.jsp"></c:import>
+
                 <h2>Joueur : ${joueur.login}</h2>
+                
             <br/>
 
             <div id="sousMenu">
