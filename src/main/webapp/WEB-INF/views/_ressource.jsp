@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <tr>
     <th class="centre" colspan="3">STOCK JOUEUR</th>
@@ -9,12 +10,16 @@
 <tr>
     <td class="ressource traitRessource centre">Carotte :</td>
     <td class="traitRessource centre">${joueur.quantiteCarotte}</td>
+    <c:if test="${joueur.quantiteCarotte > 0}">
     <td><input id="planterCarotte" type="button" value="Planter" /></td>
+    </c:if>
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Blé :</td>
     <td class="traitRessource centre">${joueur.quantiteBle}</td>
+    <c:if test="${joueur.quantiteCarotte > 0}">
     <td><input id="planterBle" type="button" value="Planter" /></td>
+    </c:if>
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Fromage :</td>
@@ -22,7 +27,12 @@
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Chèvre :</td>
-    <td class="traitRessource centre">${fn:length(joueur.chevres)}</td>
-    <td><input id="reproduction" type="button" value="Reproduction" /></td>
-    <td><input id="nourrirChevre" type="button" value="Nourrir" /></td>
+    <c:set var="nbChevres" value="${fn:length(joueur.chevres)}"/>
+    <td class="traitRessource centre">${nbChevres}</td>
+    <c:if test="${nbChevres > 0}">
+        <c:if test="${nbChevres > 1}">
+            <td><input id="reproduction" type="button" value="Reproduction" /></td>
+        </c:if>
+        <td><input id="nourrirChevre" type="button" value="Nourrir" /></td>
+    </c:if>
 </tr>
