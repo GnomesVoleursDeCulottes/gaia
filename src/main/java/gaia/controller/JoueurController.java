@@ -35,7 +35,11 @@ public class JoueurController {
     private LuneService serviceLune;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String ajouterGET(Model model) {
+    public String ajouterGET(Model model, HttpSession s) {
+        if (s != null) {
+            s.invalidate();
+        }
+
         model.addAttribute("JoueurAttr", new Joueur());
         return "index.jsp";
     }
@@ -76,11 +80,10 @@ public class JoueurController {
     }
 
     @RequestMapping(value = "/classement", method = RequestMethod.GET)
-    public String clasement(Model model){
-       
+    public String clasement(Model model) {
+
         model.addAttribute("lesJoueurs", service.findAllByOrderByQuantiteBleDesc());
         return "classement.jsp";
     }
-    
-    
+
 }
