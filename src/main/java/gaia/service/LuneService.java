@@ -112,31 +112,24 @@ public class LuneService {
 
         service.save(leJoueur);
     }
-    
-    
-    ///Can be change (save la liste entière)
-    public void faireSeReproduire(Long idJoueur, Long nbAFaireNaitre){
+
+    public void faireSeReproduire(Long idJoueur, Long nbAFaireNaitre) {
         Joueur leJoueur = service.findOne(idJoueur);
-        
-        List<Chevre> chevresAReproduire = new ArrayList();
-        for (Chevre chevre : leJoueur.getChevres()){
-            if (chevre.getProchaineGestation() <= lune){
-                chevresAReproduire.add(chevre);
-            }
-        }
-        
+
         int i = 0;
-        if (chevresAReproduire.size() < nbAFaireNaitre){
-            throw new RuntimeException("il n'y a pas assez de chevres pour faire " + nbAFaireNaitre + " bébés !");
-        }
-        for (Chevre chevre : chevresAReproduire){
-            if (i < nbAFaireNaitre){
+        for (Chevre chevre : leJoueur.getChevres()) {
+            if (chevre.getProchaineGestation() <= lune && i < nbAFaireNaitre) {
                 chevre.setProchaineGestation(lune + 12L);
-                serviceChevre.save(chevre);
                 i++;
             }
         }
-        leJoueur.getChevraux().put(lune+12L, nbAFaireNaitre);
+
+        if (i < nbAFaireNaitre) {
+            throw new RuntimeException("il n'y a pas assez de chevres pour faire " + nbAFaireNaitre + " bébés !");
+        }
+        leJoueur.getChevraux().put(lune + 12L, nbAFaireNaitre);
+        //persiste en base si tout va bien
+        serviceChevre.save(leJoueur.getChevres());
         service.save(leJoueur);
     }
 }
