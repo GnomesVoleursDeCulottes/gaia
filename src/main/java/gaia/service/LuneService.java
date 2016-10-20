@@ -44,6 +44,7 @@ public class LuneService {
         //parcours tous les joueurs
         List<Joueur> lesJoueurs = service.findAll();
         for (Joueur joueur : lesJoueurs) {
+            List<Chevre> toSup = new ArrayList<>();
             ////Mort
             //Fin de partie
             if (joueur.getProchainRepas() < lune) {
@@ -52,7 +53,7 @@ public class LuneService {
             //Mort chévre + fromage
             for (Chevre chevre : joueur.getChevres()) {
                 if (chevre.getProchainRepas() < lune) {
-                    serviceChevre.delete(chevre);
+                    toSup.add(chevre);
                 } else {
                     if (chevre.getProchainFromage() == lune) {
                         chevre.setProchainFromage(lune + 6L);
@@ -82,6 +83,12 @@ public class LuneService {
                     joueur.getChevres().add(nouvelleChevre);
                 }
                 joueur.getChevraux().remove(lune);
+            }
+            //Pour éviter une erreur (supprimer un élément de la liste parcouru)
+            //corriger avec it ?
+            for(Chevre chevre : toSup){
+                serviceChevre.delete(chevre);
+                joueur.getChevres().remove(chevre);
             }
             service.save(joueur);
         }
