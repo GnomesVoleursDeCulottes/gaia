@@ -10,6 +10,7 @@ import gaia.entity.Joueur;
 import gaia.service.ChevreServiceCRUD;
 import gaia.service.JoueurServiceCRUD;
 import gaia.service.LuneService;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +49,6 @@ public class JoueurController {
             //ajouter valeur de départ dépendant des cycles
             leJoueur = joueur;
             Chevre chevre = new Chevre();
-
             
             Long laLune = serviceLune.getLune();
             leJoueur.setProchainRepas(laLune + 4L);
@@ -61,16 +61,22 @@ public class JoueurController {
 
         } else if (! leJoueur.getMdp().equals(joueur.getMdp()))  {
             throw new RuntimeException("Vous avez entré un mauvais mot de passe, le système vous réclamera 5 euro ===> Cordialement");
+            
+         
         }
-
         s.setAttribute("idUser", leJoueur.getId());
-
-        return "gaiaDashboard.jsp";
-
+        
+        
+        
+        return "redirect:/dashboard";
     }
-
+    
+    
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String jeu() {
+    public String jeu(Model model) {
+        
+       
+        model.addAttribute("listeJoueur",service.findAll());
         return "gaiaDashboard.jsp";
     }
 }
