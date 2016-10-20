@@ -4,7 +4,9 @@
     Author     : admin
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,13 +20,13 @@
 
         <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
         <script src="../../JS/gaia.js" type="text/javascript"></script>
-        
+
         <script type="text/javascript">
-            
+
             $(document).ready(debut);
-            
+
         </script>
-        
+
     </head>
 
     <body>
@@ -36,35 +38,36 @@
             <br/>
             <div id="contenu">
                 <br/>
-
                 <h1>Cycle de Lune :</h1>
-                <br/>
+                <h2>Joueur : ${joueur.login}</h2>
+            <br/>
 
-                <div id="sousMenu">
-                    <input id="seNourrir" type="button" value="Se nourrir" />
-                    <input id="nourrirChevre" type="button" value="Nourrir chèvre" />
-                    <input id="planter" type="button" value="Planter" />
-                    <input id="reproduction" type="button" value="Reproduction" />
-                    <input id="banque" type="button" value="Banque" />
-                </div>
+            <div id="sousMenu">
+                <input id="seNourrir" type="button" value="Se nourrir" />
+                <input id="nourrirChevre" type="button" value="Nourrir chèvre" />
+                <input id="planter" type="button" value="Planter" />
+                <input id="reproduction" type="button" value="Reproduction" />
+                <input id="banque" type="button" value="Banque" />
+            </div>
 
-                <table id="ligneVie">
+            <table id="ligneVie">
+                <tr>
+                    <td id="ligneVieJoueur" class="centre"> ici l'homme vie</td>
+                    <td id="ligneVieMouton" class="centre"> ici le mouton vie</td> 
+                </tr>
+            </table>
+
+
+            <div id="tableaux">
+                <table id="stock">
                     <tr>
-                        <td id="ligneVieJoueur" class="centre"> ici l'homme vie</td>
-                        <td id="ligneVieMouton" class="centre"> ici le mouton vie</td> 
+                        <th class="centre" colspan="2">STOCK JOUEUR</th>
                     </tr>
-                </table>
-
-
-                <div id="tableaux">
-                    <table id="stock">
-                        <tr>
-                            <th class="centre" colspan="2">STOCK JOUEUR</th>
-                        </tr>
-                        <tr>
-                            <td class="ressource traitRessource centre">Ressource</td>
-                            <td class="traitRessource centre">Quantité</td>
-                        </tr>
+                    <tr>
+                        <td class="ressource traitRessource centre">Ressource</td>
+                        <td class="traitRessource centre">Quantité</td>
+                    </tr>
+                    <c:import url="_ressource.jsp"></c:import>
                     </table>
 
                     <table id="plantation">
