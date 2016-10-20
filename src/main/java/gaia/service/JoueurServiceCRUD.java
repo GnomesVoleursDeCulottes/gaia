@@ -20,5 +20,5 @@ public interface JoueurServiceCRUD extends CrudRepository<Joueur, Long>{
     @Override
     public List<Joueur> findAll();
     
-    public List<Joueur> findAllByOrderByquantiteBleDesc();
+    public List<Joueur> findAllByOrderByQuantiteBleDesc();
 }
