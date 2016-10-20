@@ -1,1 +1,1 @@
-<h1>Cycle de Lune : ${lune}</h1>
+Cycle de Lune : ${lune}

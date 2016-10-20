@@ -26,7 +26,7 @@ public class LuneService {
     @Autowired
     private ChevreServiceCRUD serviceChevre;
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 10000)
     public void incrementeLune() {
 
         System.out.println("*** FIN LUNE : " + (lune - 1L) + " ***");

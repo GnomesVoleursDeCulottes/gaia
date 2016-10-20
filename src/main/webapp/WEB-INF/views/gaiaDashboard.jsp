@@ -36,11 +36,12 @@
             <br/>
             <div id="contenu">
                 <br/>
-                
-                <c:import url="_cycle.jsp"></c:import>
+
+                <h1 id="cycle"><c:import url="_cycle.jsp"/></h1>
+
 
                 <h2>Joueur : ${joueur.login}</h2>
-                
+
             <br/>
 
             <div id="sousMenu">
