@@ -3,4 +3,4 @@ var refresh = function () {
 };
 
 
-setInterval(refresh, 2000);
+setInterval(refresh, 1500);
