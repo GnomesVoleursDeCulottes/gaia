@@ -49,7 +49,7 @@ public class JoueurController {
             //ajouter valeur de départ dépendant des cycles
             leJoueur = joueur;
             Chevre chevre = new Chevre();
-            
+
             Long laLune = serviceLune.getLune();
             leJoueur.setProchainRepas(laLune + 4L);
             chevre.setProchainAll(laLune);
@@ -59,24 +59,23 @@ public class JoueurController {
             leJoueur.getChevres().add(chevre);
             service.save(leJoueur);
 
-        } else if (! leJoueur.getMdp().equals(joueur.getMdp()))  {
+        } else if (!leJoueur.getMdp().equals(joueur.getMdp())) {
             throw new RuntimeException("Vous avez entré un mauvais mot de passe, le système vous réclamera 5 euro ===> Cordialement");
-            
-         
+
         }
         s.setAttribute("idUser", leJoueur.getId());
-        
-        
-        
+
         return "redirect:/dashboard";
     }
-    
-    
+
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String jeu(Model model) {
-        
-       
-        model.addAttribute("listeJoueur",service.findAll());
+    public String jeu(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("joueur", service.findOne(joueur));
         return "gaiaDashboard.jsp";
     }
+
+    
+    
+    
 }

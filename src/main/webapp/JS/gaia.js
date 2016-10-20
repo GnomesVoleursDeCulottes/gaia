@@ -1,1 +1,15 @@
 
+function listeStock(){
+    
+}
+
+
+
+
+
+
+
+
+function debut(){
+    
+}

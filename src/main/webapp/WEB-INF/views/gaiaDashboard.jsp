@@ -17,8 +17,14 @@
         <link href="CSS/style.css" rel="stylesheet" type="text/css"/>
 
         <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
-
-
+        <script src="../../JS/gaia.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            
+            $(document).ready(debut);
+            
+        </script>
+        
     </head>
 
     <body>
@@ -53,12 +59,18 @@
                 <div id="tableaux">
                     <table id="stock">
                         <tr>
+                            <th class="centre" colspan="2">STOCK JOUEUR</th>
+                        </tr>
+                        <tr>
                             <td class="ressource traitRessource centre">Ressource</td>
                             <td class="traitRessource centre">Quantité</td>
                         </tr>
                     </table>
 
                     <table id="plantation">
+                        <tr>
+                            <th class="centre" colspan="2">PLANTATION</th>
+                        </tr>
                         <tr>
                             <td class="ressource traitPlantation centre">Ressource</td>
                             <td class="traitPlantation centre">Date de récolte</td>
