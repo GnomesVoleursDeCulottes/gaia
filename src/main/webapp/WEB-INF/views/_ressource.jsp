@@ -1,5 +1,12 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <tr>
+    <th class="centre" colspan="3">STOCK JOUEUR</th>
+</tr>
+<tr>
+    <td class="ressource traitRessource centre">Ressource</td>
+    <td class="traitRessource centre">Quantité</td>
+</tr>
+<tr>
     <td class="ressource traitRessource centre">Carotte :</td>
     <td class="traitRessource centre">${joueur.quantiteCarotte}</td>
     <td><input id="planterCarotte" type="button" value="Planter" /></td>
