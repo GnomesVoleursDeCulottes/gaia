@@ -33,7 +33,7 @@
             <div id="contenu">
                 <br/>
 
-                <h1 id="cycle"><c:import url="_cycle.jsp"/></h1>
+                <h1 id="cycle"></h1>
 
 
             <h2>Joueur : ${joueur.login}</h2>
