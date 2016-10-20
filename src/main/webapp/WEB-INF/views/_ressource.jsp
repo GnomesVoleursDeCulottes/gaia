@@ -11,15 +11,15 @@
     <td class="ressource traitRessource centre">Carotte :</td>
     <td class="traitRessource centre">${joueur.quantiteCarotte}</td>
     <c:if test="${joueur.quantiteCarotte > 0}">
-    <td><input id="planterCarotte" type="button" value="Planter" /></td>
-    </c:if>
+        <td><input id="planterCarotte" type="button" value="Planter" /></td>
+        </c:if>
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Blé :</td>
     <td class="traitRessource centre">${joueur.quantiteBle}</td>
     <c:if test="${joueur.quantiteCarotte > 0}">
-    <td><input id="planterBle" type="button" value="Planter" /></td>
-    </c:if>
+        <td><input id="planterBle"  type="button" value="Planter" onclick="planterBle(${joueur.quantiteBle})"/></td>
+        </c:if>
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Fromage :</td>
@@ -30,9 +30,11 @@
     <c:set var="nbChevres" value="${fn:length(joueur.chevres)}"/>
     <td class="traitRessource centre">${nbChevres}</td>
     <c:if test="${nbChevres > 0}">
-        <c:if test="${nbChevres > 1}">
-            <td><input id="reproduction" type="button" value="Reproduction" /></td>
-        </c:if>
         <td><input id="nourrirChevre" type="button" value="Nourrir" /></td>
-    </c:if>
+        </c:if>
+
+    <c:if test="${nbChevres > 1}">
+        <td><input id="reproduction" type="button" value="Reproduction" /></td>
+        </c:if>
+        
 </tr>
