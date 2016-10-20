@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,15 +22,26 @@
     </head>
 
     <body>
-        <c:import url="_menu.jsp"></c:import>
+        <c:import url="_menu.jsp"/>
         <h1 id="titre">GAIA</h1>
         <br/>
         <nav id="menu"></nav>
         <br/>
         <div id="contenu"></div>
+        <c:set value="1" var="classement"/>
+        <table>
+            <c:forEach items="${lesJoueurs}" var="joueur">
+                <tr>
+                    <td>${classement}</td>
+                    <td>${joueur.login}</td>
+                    <td>${joueur.quantiteBle}</td>
+                </tr>
+                <c:set value="${classement + 1}" var="classement"/>
+            </c:forEach>
+        </table>
         <br/>
         <footer id="pied">
-        <c:import url="_pied.jsp"></c:import>
+            <c:import url="_pied.jsp"/>
         </footer>
 
     </body>
