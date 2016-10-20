@@ -19,11 +19,7 @@
         <link href="CSS/style.css" rel="stylesheet" type="text/css"/>
 
         <script src="JS/jquery-3.1.1.js" type="text/javascript"></script>
-        <script src="../../JS/gaia.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-
-        </script>
+        <script src="JS/gaia.js" type="text/javascript"></script>
 
     </head>
 
@@ -40,7 +36,7 @@
                 <h1 id="cycle"><c:import url="_cycle.jsp"/></h1>
 
 
-                <h2>Joueur : ${joueur.login}</h2>
+            <h2>Joueur : ${joueur.login}</h2>
 
             <br/>
 
@@ -59,32 +55,24 @@
 
             <div id="tableaux">
                 <table id="stock">
+                </table>
+
+                <table id="plantation">
                     <tr>
-                        <th class="centre" colspan="3">STOCK JOUEUR</th>
+                        <th class="centre" colspan="3">PLANTATION</th>
                     </tr>
                     <tr>
-                        <td class="ressource traitRessource centre">Ressource</td>
-                        <td class="traitRessource centre">Quantité</td>
+                        <td class="ressource traitPlantation centre">Ressource</td>
+                        <td class="traitPlantation centre">Date de récolte</td>
+
                     </tr>
-                    <c:import url="_ressource.jsp"></c:import>
-                    </table>
-
-                    <table id="plantation">
-                        <tr>
-                            <th class="centre" colspan="3">PLANTATION</th>
-                        </tr>
-                        <tr>
-                            <td class="ressource traitPlantation centre">Ressource</td>
-                            <td class="traitPlantation centre">Date de récolte</td>
-
-                        </tr>
-                    </table>
-                </div>
-
+                </table>
             </div>
 
-            <br/>
-            <footer id="pied">
+        </div>
+
+        <br/>
+        <footer id="pied">
             <c:import url="_pied.jsp"></c:import>
         </footer>
 
