@@ -93,4 +93,11 @@ public class JoueurController {
         model.addAttribute("joueur", service.findOne(joueur));
         return "_ressource.jsp";
     }
+    
+    @RequestMapping(value = "/cycle", method = RequestMethod.GET)
+    public String cycle(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("lune", serviceLune.getLune());
+        return "_cycle.jsp";
+    }
 }
