@@ -132,4 +132,28 @@ public class LuneService {
         serviceChevre.save(leJoueur.getChevres());
         service.save(leJoueur);
     }
+    
+    public void nourrir(Long idJoueur, Long nbANourrir){
+        Joueur leJoueur = service.findOne(idJoueur);
+        
+        long i = 0;
+        for (Chevre chevre : leJoueur.getChevres()){
+            if (chevre.getProchainRepas() == lune && i < nbANourrir){
+                chevre.setProchainRepas(lune + 4L);
+                leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 1L);
+            }
+        }
+        //erreur de requête
+        if (leJoueur.getQuantiteBle() < 0L){
+            throw new RuntimeException("Pas assez de blé");
+        }
+        
+        if (i < nbANourrir){
+            throw new RuntimeException("Erreur pas assez de chèvres à nourrir");
+        }
+        
+        //sauvegarde Si tout OK
+        serviceChevre.save(leJoueur.getChevres());
+        service.save(leJoueur);
+    }
 }
