@@ -32,7 +32,7 @@ public class LuneService {
         cycleDeVie();
         System.out.println("*** CYCLE LUNE : " + lune + " OK ***");
         lune++;
-        
+
     }
 
     public long getLune() {
@@ -42,38 +42,38 @@ public class LuneService {
     private void cycleDeVie() {
         //parcours tous les joueurs
         List<Joueur> lesJoueurs = service.findAll();
-        for (Joueur joueur: lesJoueurs){
+        for (Joueur joueur : lesJoueurs) {
             ////Mort
             //Fin de partie
-            if (joueur.getProchainRepas() < lune){
+            if (joueur.getProchainRepas() < lune) {
                 ////?????
             }
             //Mort chévre + fromage
-            for (Chevre chevre: joueur.getChevres()){
-                if (chevre.getProchainRepas() < lune){
+            for (Chevre chevre : joueur.getChevres()) {
+                if (chevre.getProchainRepas() < lune) {
                     serviceChevre.delete(chevre);
                 } else {
-                    if (chevre.getProchainFromage() == lune){
+                    if (chevre.getProchainFromage() == lune) {
                         chevre.setProchainFromage(lune + 6L);
-                        joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long)Math.floor(Math.random()*2));
+                        joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
                     }
                 }
             }
             ////Naissance (sauf fromage)
             //Recolte Blé
-            if (joueur.getBlePlante().containsKey(lune)){
+            if (joueur.getBlePlante().containsKey(lune)) {
                 joueur.setQuantiteBle(joueur.getQuantiteBle() + joueur.getBlePlante().get(lune));
                 joueur.getBlePlante().remove(lune);
             }
-            
+
             //Recolte Carotte
-            if (joueur.getCarottePlantee().containsKey(lune)){
-                joueur.setQuantiteCarotte(joueur.getQuantiteCarotte()+ joueur.getCarottePlantee().get(lune));
+            if (joueur.getCarottePlantee().containsKey(lune)) {
+                joueur.setQuantiteCarotte(joueur.getQuantiteCarotte() + joueur.getCarottePlantee().get(lune));
                 joueur.getCarottePlantee().remove(lune);
             }
             //Maturation Chevraux
-            if (joueur.getChevraux().containsKey(lune)){
-                for (long i = 0L; i < joueur.getChevraux().get(lune); i++){
+            if (joueur.getChevraux().containsKey(lune)) {
+                for (long i = 0L; i < joueur.getChevraux().get(lune); i++) {
                     Chevre nouvelleChevre = new Chevre();
                     nouvelleChevre.setLeJoueur(joueur);
                     nouvelleChevre.setProchainAll(lune);
@@ -84,5 +84,31 @@ public class LuneService {
             }
             service.save(joueur);
         }
+    }
+
+    public void planterBle(Long idJoueur, Long nbPlante) {
+        Joueur leJoueur = service.findOne(idJoueur);
+
+        leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - nbPlante);
+        Long dejaPlante = 0L;
+        if (leJoueur.getBlePlante().containsKey(lune + 6L)) {
+            dejaPlante = leJoueur.getBlePlante().get(lune + 6L);
+        }
+        leJoueur.getBlePlante().put(lune + 6L, dejaPlante + (nbPlante * 3L) + (long) Math.ceil(Math.random() * nbPlante));
+
+        service.save(leJoueur);
+    }
+
+    public void planterCarotte(Long idJoueur, Long nbPlante) {
+        Joueur leJoueur = service.findOne(idJoueur);
+
+        leJoueur.setQuantiteCarotte(leJoueur.getQuantiteCarotte() - nbPlante);
+        Long dejaPlante = 0L;
+        if (leJoueur.getCarottePlantee().containsKey(lune + 6L)) {
+            dejaPlante = leJoueur.getCarottePlantee().get(lune + 6L);
+        }
+        leJoueur.getCarottePlantee().put(lune + 6L, dejaPlante + (nbPlante * 3L) + (long) Math.ceil(Math.random() * nbPlante));
+
+        service.save(leJoueur);
     }
 }
