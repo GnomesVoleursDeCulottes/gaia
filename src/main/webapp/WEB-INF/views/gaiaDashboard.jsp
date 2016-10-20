@@ -23,7 +23,11 @@
 
         <script type="text/javascript">
 
-            $(document).ready(debut);
+
+            function cycleLune() {
+                $('h1').append('Cycle de Lune : ${lune}');
+            }
+
 
         </script>
 
@@ -38,15 +42,12 @@
             <br/>
             <div id="contenu">
                 <br/>
-                <h1>Cycle de Lune :</h1>
+                <h1><!--cycle de lune gere par js ne pas remplir--></h1>
                 <h2>Joueur : ${joueur.login}</h2>
             <br/>
 
             <div id="sousMenu">
                 <input id="seNourrir" type="button" value="Se nourrir" />
-                
-                
-                
                 <input id="banque" type="button" value="Banque" />
             </div>
 

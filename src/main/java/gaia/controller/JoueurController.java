@@ -76,6 +76,7 @@ public class JoueurController {
     public String jeu(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
+        model.addAttribute("lune", serviceLune.getLune());
         return "gaiaDashboard.jsp";
     }
 
