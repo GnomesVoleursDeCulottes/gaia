@@ -32,7 +32,6 @@ public class LuneService {
         System.out.println("*** FIN LUNE : " + (lune - 1L) + " ***");
         cycleDeVie();
         System.out.println("*** CYCLE LUNE : " + lune + " OK ***");
-       
 
     }
 
@@ -54,11 +53,9 @@ public class LuneService {
             for (Chevre chevre : joueur.getChevres()) {
                 if (chevre.getProchainRepas() < lune) {
                     toSup.add(chevre);
-                } else {
-                    if (chevre.getProchainFromage() == lune) {
-                        chevre.setProchainFromage(lune + 6L);
-                        joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
-                    }
+                } else if (chevre.getProchainFromage() == lune) {
+                    chevre.setProchainFromage(lune + 6L);
+                    joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
                 }
             }
             ////Naissance (sauf fromage)
@@ -86,7 +83,7 @@ public class LuneService {
             }
             //Pour éviter une erreur (supprimer un élément de la liste parcouru)
             //corriger avec it ?
-            for(Chevre chevre : toSup){
+            for (Chevre chevre : toSup) {
                 serviceChevre.delete(chevre);
                 joueur.getChevres().remove(chevre);
             }
@@ -139,28 +136,53 @@ public class LuneService {
         serviceChevre.save(leJoueur.getChevres());
         service.save(leJoueur);
     }
-    
-    public void nourrir(Long idJoueur, Long nbANourrir){
+
+    public void nourrir(Long idJoueur, Long nbANourrir) {
         Joueur leJoueur = service.findOne(idJoueur);
-        
+
         long i = 0;
-        for (Chevre chevre : leJoueur.getChevres()){
-            if (chevre.getProchainRepas() == lune && i < nbANourrir){
+        for (Chevre chevre : leJoueur.getChevres()) {
+            if (chevre.getProchainRepas() == lune && i < nbANourrir) {
                 chevre.setProchainRepas(lune + 4L);
                 leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 1L);
             }
         }
         //erreur de requête
-        if (leJoueur.getQuantiteBle() < 0L){
+        if (leJoueur.getQuantiteBle() < 0L) {
             throw new RuntimeException("Pas assez de blé");
         }
-        
-        if (i < nbANourrir){
+
+        if (i < nbANourrir) {
             throw new RuntimeException("Erreur pas assez de chèvres à nourrir");
         }
-        
+
         //sauvegarde Si tout OK
         serviceChevre.save(leJoueur.getChevres());
         service.save(leJoueur);
+    }
+
+    //se nourrir de chevre
+    public void seNourrir(Long idJoueur, Chevre chevre) {
+        serviceChevre.delete(chevre);
+        Joueur leJoueur = service.findOne(idJoueur);
+        leJoueur.getChevres().remove(chevre);
+    }
+
+    //se nourrir d'autre chose
+    public void seNourrir(Long idJoueur, String ressource) {
+        Joueur leJoueur = service.findOne(idJoueur);
+        switch (ressource) {
+            case "carotte":
+                leJoueur.setQuantiteCarotte(leJoueur.getQuantiteCarotte() - 2L);
+                break;
+            case "ble":
+                leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 3L);
+                break;
+            case "fromage":
+                leJoueur.setQuantiteFromage(leJoueur.getQuantiteBle() - 2L);
+                break;
+            default:
+                throw new RuntimeException("Erreur: la nourriture est : " + ressource);
+        }
     }
 }
