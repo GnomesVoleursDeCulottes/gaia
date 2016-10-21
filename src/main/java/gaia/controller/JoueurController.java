@@ -96,67 +96,75 @@ public class JoueurController {
         model.addAttribute("joueur", service.findOne(joueur));
         return "_ressource.jsp";
     }
-    
+
     @RequestMapping(value = "/cycle", method = RequestMethod.GET)
     public String cycle(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("lune", serviceLune.getLune());
         return "_cycle.jsp";
     }
-    
+
     @RequestMapping(value = "/sous_menu", method = RequestMethod.GET)
-    public String sousMenu(Model model, HttpSession s){
+    public String sousMenu(Model model, HttpSession s) {
         Long idUser = (Long) s.getAttribute("idUser");
         Joueur joueur = service.findOne(idUser);
         model.addAttribute("affiche", serviceLune.getLune() == joueur.getProchainRepas());
         String tab = "[";
         boolean virgule = false;
-        
-        if (joueur.getQuantiteBle() > 2){
+
+        if (joueur.getQuantiteBle() > 2) {
             tab += "'ble'";
             virgule = !virgule;
         }
-        if (joueur.getQuantiteCarotte()> 1){
-            if (virgule){
-                tab+=',';
+        if (joueur.getQuantiteCarotte() > 1) {
+            if (virgule) {
+                tab += ',';
             }
             tab += "'carotte'";
             virgule = true;
         }
-        if (joueur.getQuantiteFromage()> 1){
-            if (virgule){
-                tab+=',';
+        if (joueur.getQuantiteFromage() > 1) {
+            if (virgule) {
+                tab += ',';
             }
             tab += "'fromage'";
             virgule = true;
         }
-        if (joueur.getChevres().size() > 0){
-            if (virgule){
-                tab+=',';
+        if (joueur.getChevres().size() > 0) {
+            if (virgule) {
+                tab += ',';
             }
             tab += "'chevre'";
             virgule = true;
         }
-        
+
         tab += "]";
-        
+
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
     }
-    
+
     @RequestMapping(value = "/seNourrir/{leRepas}", method = RequestMethod.POST)
     @ResponseBody
-    public String seNourrir(HttpSession s, @PathVariable("leRepas") String leRepas){
+    public String seNourrir(HttpSession s, @PathVariable("leRepas") String leRepas) {
         Long leJoueur = (Long) s.getAttribute("idUser");
         serviceLune.seNourrir(leJoueur, leRepas);
         return "";
     }
-    
+
     @RequestMapping(value = "/planterBle/{nbPlante}", method = RequestMethod.POST)
     @ResponseBody
-    public String planterBle(HttpSession s, @PathVariable("nbPlante") Long nbPlante){
+    public String planterBle(HttpSession s, @PathVariable("nbPlante") Long nbPlante) {
         Long leJoueur = (Long) s.getAttribute("idUser");
         serviceLune.planterBle(leJoueur, nbPlante);
+        return "";
+    }
+
+    @RequestMapping(value = "/planterCarotte/{nbPlante}", method = RequestMethod.POST)
+    @ResponseBody
+    public String planterCarotte(HttpSession s, @PathVariable("nbPlante") Long nbPlante) {
+        Long leJoueur = (Long) s.getAttribute("idUser");
+        serviceLune.planterCarotte(leJoueur, nbPlante);
         return "";
     }
 }
