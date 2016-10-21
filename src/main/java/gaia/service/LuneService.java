@@ -145,6 +145,7 @@ public class LuneService {
             if (chevre.getProchainRepas() == lune && i < nbANourrir) {
                 chevre.setProchainRepas(lune + 4L);
                 leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 1L);
+                i++;
             }
         }
         //erreur de requête
