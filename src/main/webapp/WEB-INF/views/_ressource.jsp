@@ -11,7 +11,7 @@
     <td class="ressource traitRessource centre">Carotte :</td>
     <td class="traitRessource centre">${joueur.quantiteCarotte}</td>
     <c:if test="${joueur.quantiteCarotte > 0}">
-        <td><input id="planterCarotte" type="button" value="Planter" /></td>
+        <td><input id="planterCarotte" type="button" value="Planter"  onclick="planterCarotte(${joueur.quantiteCarotte})" /></td>
         </c:if>
 </tr>
 <tr>
