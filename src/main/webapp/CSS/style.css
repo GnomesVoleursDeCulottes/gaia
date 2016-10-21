@@ -169,4 +169,20 @@ footer{
     border: 3px double coral;  
 }
 
+/*** css de la maternité  ***/
+
+#materniter{
+    width: 65%;
+    margin: auto;
+    margin-top: 5%;    
+}
+
+.traitMaterniter{
+    border: 3px double coral;  
+}
+
+
+
+
+
 
