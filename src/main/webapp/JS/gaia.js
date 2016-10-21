@@ -8,6 +8,20 @@
     $.post(tmp);
 };
 
+var nourrirChevre = function(chevre){
+    
+    var nbANourrir;
+    do{
+         nbANourrir = prompt("Combien de chèvre(s) voulez vous nourrir? (max " + chevre + ")");
+        
+        
+    } while ( nbANourrir < 0 || nbANourrir > chevre);
+      var tmp = "/gaia/nourrirChevre/" + nbANourrir;
+    $.post(tmp);
+};
+
+
+
 var planterCarotte = function(carotte){
     var nbPlante;
     do {
