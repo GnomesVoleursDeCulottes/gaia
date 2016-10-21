@@ -4,7 +4,7 @@
         nbPlante = prompt("Combien de blé voulez vous planter? (max " + ble + ")");
     }while (nbPlante < 0 || nbPlante > ble);
     var tmp ="/gaia/planterBle/" + nbPlante ;
-    console.log(tmp);
+ //   console.log(tmp);
     $.post(tmp);
 };
 
@@ -22,6 +22,7 @@ var refresh = function () {
     $("#stock").load("/gaia/ressource");
     $("#cycle").load("/gaia/cycle");
     $("#sousMenu").load("/gaia/sous_menu");
+    $("#plantation").load("/gaia/plantation");
 };
 
 var seNourrir = function(dispo){
