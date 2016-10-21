@@ -41,8 +41,7 @@
             <br/>
 
             <div id="sousMenu">
-                <input id="seNourrir" type="button" value="Se nourrir" />
-                <input id="banque" type="button" value="Banque" />
+                
             </div>
 
             <table id="ligneVie">
