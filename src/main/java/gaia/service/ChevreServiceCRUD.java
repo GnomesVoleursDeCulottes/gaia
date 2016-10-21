@@ -15,5 +15,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ChevreServiceCRUD extends CrudRepository<Chevre, Long>{
     
-    
+    public List<Chevre> findAllByLeJoueurIdAndProchainRepas(long idJoueur,long cycle);
 }
