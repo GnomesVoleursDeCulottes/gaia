@@ -1,10 +1,20 @@
-var planterBle = function(ble){
+    var planterBle = function(ble){
     var nbPlante;
     do {
         nbPlante = prompt("Combien de blé voulez vous planter? (max " + ble + ")");
     }while (nbPlante < 0 || nbPlante > ble);
     var tmp ="/gaia/planterBle/" + nbPlante ;
     console.log(tmp);
+    $.post(tmp);
+};
+
+var planterCarotte = function(carotte){
+    var nbPlante;
+    do {
+        nbPlante = prompt("Combien de carotte(s) voulez vous planter? (max " + carotte + ")");
+    }while (nbPlante < 0 || nbPlante > carotte);
+    var tmp ="/gaia/planterCarotte/" + nbPlante ;
+//    console.log(tmp);
     $.post(tmp);
 };
 
