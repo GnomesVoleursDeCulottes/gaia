@@ -94,6 +94,7 @@ public class JoueurController {
     public String ressources(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
+        model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
         return "_ressource.jsp";
     }
 
@@ -151,7 +152,16 @@ public class JoueurController {
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
     }
-
+    
+     @RequestMapping(value = "/nourrirChevre/{nbANourrir}", method = RequestMethod.POST)
+    @ResponseBody
+    public String nourrirChevre(HttpSession s, @PathVariable("nbANourrir") Long nbANourrir) {
+        Long leJoueur = (Long) s.getAttribute("idUser");
+        serviceLune.nourrir(leJoueur, nbANourrir);
+        return "";
+    
+    }
+    
     @RequestMapping(value = "/seNourrir/{leRepas}", method = RequestMethod.POST)
     @ResponseBody
     public String seNourrir(HttpSession s, @PathVariable("leRepas") String leRepas) {
@@ -175,4 +185,5 @@ public class JoueurController {
         serviceLune.planterCarotte(leJoueur, nbPlante);
         return "";
     }
+    
 }
