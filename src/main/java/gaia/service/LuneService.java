@@ -173,7 +173,7 @@ public class LuneService {
                 leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 3L);
                 break;
             case "fromage":
-                leJoueur.setQuantiteFromage(leJoueur.getQuantiteBle() - 2L);
+                leJoueur.setQuantiteFromage(leJoueur.getQuantiteFromage()- 2L);
                 break;
             case "chevre":
                 Chevre chevre = leJoueur.getChevres().remove(0);
