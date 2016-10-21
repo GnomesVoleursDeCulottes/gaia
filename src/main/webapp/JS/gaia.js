@@ -37,6 +37,7 @@ var refresh = function () {
     $("#cycle").load("/gaia/cycle");
     $("#sousMenu").load("/gaia/sous_menu");
     $("#plantation").load("/gaia/plantation");
+    $("#materniter").load("/gaia/materniter");
 };
 
 var seNourrir = function(dispo){

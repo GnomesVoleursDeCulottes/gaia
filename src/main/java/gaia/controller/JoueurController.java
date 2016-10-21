@@ -97,6 +97,13 @@ public class JoueurController {
         model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
         return "_ressource.jsp";
     }
+    
+    @RequestMapping(value = "/materniter", method = RequestMethod.GET)
+    public String materniter(Model model, HttpSession s){
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("chevreauxJoueur", service.findOne(joueur).getChevraux());
+        return "_materniter.jsp";
+    }
 
     @RequestMapping(value = "/plantation", method = RequestMethod.GET)
     public String plantation(Model model, HttpSession s) {

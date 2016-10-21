@@ -61,13 +61,15 @@ public class LuneService {
             ////Naissance (sauf fromage)
             //Recolte Blé
             if (joueur.getBlePlante().containsKey(lune)) {
-                joueur.setQuantiteBle(joueur.getQuantiteBle() + joueur.getBlePlante().get(lune));
+                Long nouvelle = (long) Math.floor((joueur.getBlePlante().get(lune)) * (3d + Math.random()));
+                joueur.setQuantiteBle(joueur.getQuantiteBle() + nouvelle);
                 joueur.getBlePlante().remove(lune);
             }
 
             //Recolte Carotte
             if (joueur.getCarottePlantee().containsKey(lune)) {
-                joueur.setQuantiteCarotte(joueur.getQuantiteCarotte() + joueur.getCarottePlantee().get(lune));
+                Long nouvelle = (long) Math.floor((joueur.getCarottePlantee().get(lune)) * (2d + Math.random()));
+                joueur.setQuantiteCarotte(joueur.getQuantiteCarotte() + nouvelle);
                 joueur.getCarottePlantee().remove(lune);
             }
             //Maturation Chevraux
@@ -99,7 +101,7 @@ public class LuneService {
         if (leJoueur.getBlePlante().containsKey(lune + 6L)) {
             dejaPlante = leJoueur.getBlePlante().get(lune + 6L);
         }
-        leJoueur.getBlePlante().put(lune + 6L, dejaPlante + (nbPlante * 3L) + (long) Math.ceil(Math.random() * nbPlante));
+        leJoueur.getBlePlante().put(lune + 6L, dejaPlante + nbPlante);
 
         service.save(leJoueur);
     }
@@ -112,7 +114,7 @@ public class LuneService {
         if (leJoueur.getCarottePlantee().containsKey(lune + 6L)) {
             dejaPlante = leJoueur.getCarottePlantee().get(lune + 6L);
         }
-        leJoueur.getCarottePlantee().put(lune + 6L, dejaPlante + (nbPlante * 3L) + (long) Math.ceil(Math.random() * nbPlante));
+        leJoueur.getCarottePlantee().put(lune + 6L, dejaPlante + nbPlante);
 
         service.save(leJoueur);
     }
@@ -162,7 +164,6 @@ public class LuneService {
         service.save(leJoueur);
     }
 
-
     //se nourrir d'autre chose
     public void seNourrir(Long idJoueur, String ressource) {
         Joueur leJoueur = service.findOne(idJoueur);
@@ -174,7 +175,7 @@ public class LuneService {
                 leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 3L);
                 break;
             case "fromage":
-                leJoueur.setQuantiteFromage(leJoueur.getQuantiteBle() - 2L);
+                leJoueur.setQuantiteFromage(leJoueur.getQuantiteFromage() - 2L);
                 break;
             case "chevre":
                 Chevre chevre = leJoueur.getChevres().remove(0);
