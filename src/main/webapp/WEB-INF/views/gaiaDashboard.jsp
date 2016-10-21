@@ -53,19 +53,13 @@
 
 
             <div id="tableaux">
+                
                 <table id="stock">
                 </table>
 
                 <table id="plantation">
-                    <tr>
-                        <th class="centre" colspan="3">PLANTATION</th>
-                    </tr>
-                    <tr>
-                        <td class="ressource traitPlantation centre">Ressource</td>
-                        <td class="traitPlantation centre">Date de récolte</td>
-
-                    </tr>
                 </table>
+                
             </div>
 
         </div>
