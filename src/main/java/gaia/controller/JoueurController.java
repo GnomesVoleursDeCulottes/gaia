@@ -97,6 +97,14 @@ public class JoueurController {
         return "_ressource.jsp";
     }
 
+    @RequestMapping(value = "/plantation", method = RequestMethod.GET)
+    public String plantation(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("ble",service.findOne(joueur).getBlePlante());
+        model.addAttribute("carotte", service.findOne(joueur).getCarottePlantee());
+        return "_plantation.jsp";
+    }
+    
     @RequestMapping(value = "/cycle", method = RequestMethod.GET)
     public String cycle(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
