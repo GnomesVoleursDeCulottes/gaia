@@ -10,6 +10,7 @@ import gaia.entity.Joueur;
 import gaia.service.ChevreServiceCRUD;
 import gaia.service.JoueurServiceCRUD;
 import gaia.service.LuneService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,8 +107,49 @@ public class JoueurController {
     @RequestMapping(value = "/sous_menu", method = RequestMethod.GET)
     public String sousMenu(Model model, HttpSession s){
         Long idUser = (Long) s.getAttribute("idUser");
-        model.addAttribute("affiche", serviceLune.getLune() == service.findOne(idUser).getProchainRepas());
+        Joueur joueur = service.findOne(idUser);
+        model.addAttribute("affiche", serviceLune.getLune() == joueur.getProchainRepas());
+        String tab = "[";
+        boolean virgule = false;
+        
+        if (joueur.getQuantiteBle() > 2){
+            tab += "'ble'";
+            virgule = !virgule;
+        }
+        if (joueur.getQuantiteCarotte()> 1){
+            if (virgule){
+                tab+=',';
+            }
+            tab += "'carotte'";
+            virgule = true;
+        }
+        if (joueur.getQuantiteFromage()> 1){
+            if (virgule){
+                tab+=',';
+            }
+            tab += "'fromage'";
+            virgule = true;
+        }
+        if (joueur.getChevres().size() > 0){
+            if (virgule){
+                tab+=',';
+            }
+            tab += "'chevre'";
+            virgule = true;
+        }
+        
+        tab += "]";
+        
+        model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
+    }
+    
+    @RequestMapping(value = "/seNourrir/{leRepas}", method = RequestMethod.POST)
+    @ResponseBody
+    public String seNourrir(HttpSession s, @PathVariable("leRepas") String leRepas){
+        Long leJoueur = (Long) s.getAttribute("idUser");
+        serviceLune.seNourrir(leJoueur, leRepas);
+        return "";
     }
     
     @RequestMapping(value = "/planterBle/{nbPlante}", method = RequestMethod.POST)
