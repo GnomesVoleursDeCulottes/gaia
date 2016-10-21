@@ -14,7 +14,14 @@ var refresh = function () {
     $("#sousMenu").load("/gaia/sous_menu");
 };
 
-
+var seNourrir = function(dispo){
+    var leRepas;
+    do {
+        leRepas = prompt("Choisissez un repas parmi " + dispo);
+    }while (! dispo.includes(leRepas) );
+    var toPost = "/gaia/seNourrir/" + leRepas;
+    $.post(toPost);
+};
 
 $(document).ready(function (){
    
