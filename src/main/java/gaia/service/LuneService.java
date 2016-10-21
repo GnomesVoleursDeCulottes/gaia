@@ -161,13 +161,6 @@ public class LuneService {
         service.save(leJoueur);
     }
 
-    //se nourrir de chevre
-    public void seNourrir(Long idJoueur, Chevre chevre) {
-        serviceChevre.delete(chevre);
-        Joueur leJoueur = service.findOne(idJoueur);
-        leJoueur.getChevres().remove(chevre);
-        service.save(leJoueur);
-    }
 
     //se nourrir d'autre chose
     public void seNourrir(Long idJoueur, String ressource) {
@@ -182,6 +175,9 @@ public class LuneService {
             case "fromage":
                 leJoueur.setQuantiteFromage(leJoueur.getQuantiteBle() - 2L);
                 break;
+            case "chevre":
+                Chevre chevre = leJoueur.getChevres().remove(0);
+                serviceChevre.delete(chevre);
             default:
                 throw new RuntimeException("Erreur: la nourriture est : " + ressource);
         }
