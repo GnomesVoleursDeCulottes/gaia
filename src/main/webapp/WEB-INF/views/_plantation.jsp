@@ -15,14 +15,14 @@
     <tr>
         <td class="ressource traitPlantation centre">blé(s)</td>
         <td class="traitPlantation centre"> ${blePlante.value}</td>
-        <td class="traitPlantation centre">dans  ${blePlante.key} cycle(s)</td>
+        <td class="traitPlantation centre">au ${blePlante.key} cycle(s)</td>
     </tr>
 </c:forEach>
 <c:forEach var="carottePlante" items="${carotte}">
     <tr>
         <td class="ressource traitPlantation centre"> Carotte(s)</td>
         <td class="traitPlantation centre"> ${carottePlante.value}</td>
-        <td class="traitPlantation centre">dans  ${carottePlante.key} cycle(s)</td>
+        <td class="traitPlantation centre">au ${carottePlante.key} cycle(s)</td>
         </tr>
 </c:forEach>
 
