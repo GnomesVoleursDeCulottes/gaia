@@ -181,6 +181,7 @@ public class LuneService {
             default:
                 throw new RuntimeException("Erreur: la nourriture est : " + ressource);
         }
+        leJoueur.setProchainRepas(lune + 4L);
         service.save(leJoueur);
     }
 }
