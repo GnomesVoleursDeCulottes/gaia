@@ -103,6 +103,13 @@ public class JoueurController {
         return "_cycle.jsp";
     }
     
+    @RequestMapping(value = "/sous_menu", method = RequestMethod.GET)
+    public String sousMenu(Model model, HttpSession s){
+        Long idUser = (Long) s.getAttribute("idUser");
+        model.addAttribute("affiche", serviceLune.getLune() == service.findOne(idUser).getProchainRepas());
+        return "_sous_menu.jsp";
+    }
+    
     @RequestMapping(value = "/planterBle/{nbPlante}", method = RequestMethod.POST)
     @ResponseBody
     public String planterBle(HttpSession s, @PathVariable("nbPlante") Long nbPlante){
