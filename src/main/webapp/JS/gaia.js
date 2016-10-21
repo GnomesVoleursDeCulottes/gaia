@@ -13,4 +13,9 @@ var refresh = function () {
     $("#cycle").load("/gaia/cycle");
 };
 
-setInterval(refresh, 1000);
+
+
+$(document).ready(function (){
+   
+    setInterval(refresh, 1000);
+});
