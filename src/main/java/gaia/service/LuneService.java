@@ -166,6 +166,7 @@ public class LuneService {
         serviceChevre.delete(chevre);
         Joueur leJoueur = service.findOne(idJoueur);
         leJoueur.getChevres().remove(chevre);
+        service.save(leJoueur);
     }
 
     //se nourrir d'autre chose
@@ -184,5 +185,6 @@ public class LuneService {
             default:
                 throw new RuntimeException("Erreur: la nourriture est : " + ressource);
         }
+        service.save(leJoueur);
     }
 }
