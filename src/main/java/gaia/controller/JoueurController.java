@@ -65,7 +65,33 @@ public class JoueurController {
             serviceChevre.save(chevre);
             leJoueur.getChevres().add(chevre);
             service.save(leJoueur);
+            
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            chevre = new Chevre();
 
+            laLune = serviceLune.getLune();
+            leJoueur.setProchainRepas(laLune + 4L);
+            chevre.setProchainAll(laLune);
+            service.save(leJoueur);
+            chevre.setLeJoueur(leJoueur);
+            serviceChevre.save(chevre);
+            leJoueur.getChevres().add(chevre);
+            service.save(leJoueur);
+            
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            //////////////////////////////////////////////////tmp
+            
         } else if (!leJoueur.getMdp().equals(joueur.getMdp())) {
             throw new RuntimeException("Vous avez entré un mauvais mot de passe, le système vous réclamera 5 euro ===> Cordialement");
 
@@ -95,6 +121,7 @@ public class JoueurController {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
         model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
+        model.addAttribute("nbChevresReprod", serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune()+1L));
         return "_ressource.jsp";
     }
     
@@ -151,13 +178,20 @@ public class JoueurController {
                 tab += ',';
             }
             tab += "'chevre'";
-            virgule = true;
         }
 
         tab += "]";
 
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
+    }
+    
+    @RequestMapping(value = "/reproduction/{nbBebe}", method = RequestMethod.POST)
+    @ResponseBody
+    public String reproduction(HttpSession s, @PathVariable("nbBebe") Long nbBebe){
+        Long leJoueur = (Long) s.getAttribute("idUser");
+        serviceLune.faireSeReproduire(leJoueur, nbBebe);
+        return "";
     }
     
      @RequestMapping(value = "/nourrirChevre/{nbANourrir}", method = RequestMethod.POST)
