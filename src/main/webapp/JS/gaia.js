@@ -20,7 +20,14 @@ var nourrirChevre = function(chevre){
     $.post(tmp);
 };
 
-
+var reproduction = function(nbChevre){
+    var nbBebe;
+    do {
+        var nbBebe = prompt("Combien voulez-vous mettre de chevreaux au monde ?" + Math.floor(nbChevre/2));
+    }while (nbBebe < 0 || nbBebe > Math.floor(nbChevre/2));
+    var tmp = "/gaia/reproduction/" + nbBebe;
+    $.post(tmp);
+};
 
 var planterCarotte = function(carotte){
     var nbPlante;
@@ -51,5 +58,5 @@ var seNourrir = function(dispo){
 
 $(document).ready(function (){
    
-    setInterval(refresh, 1000);
+    setInterval(refresh, 2000);
 });
