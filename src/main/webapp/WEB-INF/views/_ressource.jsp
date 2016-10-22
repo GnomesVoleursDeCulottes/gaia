@@ -28,17 +28,16 @@
 <tr>
     <td class="ressource traitRessource centre">Chèvre :</td>
     <c:set var="nbChevres" value="${fn:length(joueur.chevres)}"/>
-    <c:set var="nbChevresPourManger" value="${fn:length(chevrePourManger)}"/>
     <td class="traitRessource centre">${nbChevres}</td>
+    <c:set var="nbChevresPourManger" value="${fn:length(chevrePourManger)}"/>
     <c:if test="${joueur.quantiteBle < nbChevresPourManger}">
         <c:set var="nbChevresPourManger" value="${joueur.quantiteBle}"/>
     </c:if>
     <c:if test="${nbChevresPourManger > 0}">
-        <td><input id="nourrirChevre" type="button" value="Nourrir" onclick=" nourrirChevre(${nbChevresPourManger})" /></td>
-        </c:if>
-
-    <c:if test="${nbChevres > 1}">
-        <td><input id="reproduction" type="button" value="Reproduction" /></td>
-        </c:if>
+        <td><input id="nourrirChevre" type="button" value="Nourrir" onclick="nourrirChevre(${nbChevresPourManger})" /></td>
+    </c:if>
+    <c:if test="${nbChevresReprod > 1}">
+        <td><input id="reproduction" type="button" value="Reproduction" onclick="reproduction(${nbChevresReprod})"/></td>
+    </c:if>
 
 </tr>
