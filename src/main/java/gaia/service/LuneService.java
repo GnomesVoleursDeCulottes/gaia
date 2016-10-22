@@ -26,7 +26,7 @@ public class LuneService {
     @Autowired
     private ChevreServiceCRUD serviceChevre;
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 100000)
     public void incrementeLune() {
         lune++;
         System.out.println("*** FIN LUNE : " + (lune - 1L) + " ***");
@@ -122,9 +122,9 @@ public class LuneService {
     public void faireSeReproduire(Long idJoueur, Long nbAFaireNaitre) {
         Joueur leJoueur = service.findOne(idJoueur);
 
-        int i = 0;
+        long i = 0;
         for (Chevre chevre : leJoueur.getChevres()) {
-            if (chevre.getProchaineGestation() <= lune && i < nbAFaireNaitre) {
+            if (chevre.getProchaineGestation() <= lune && i < nbAFaireNaitre*2L) {
                 chevre.setProchaineGestation(lune + 12L);
                 i++;
             }
