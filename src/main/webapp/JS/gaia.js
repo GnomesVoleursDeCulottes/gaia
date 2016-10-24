@@ -36,11 +36,7 @@ var reproduction = function (nbChevre) {
     }, 100);
 };
 
-var seNourrir = function (dispo) {
-    var leRepas;
-    do {
-        leRepas = prompt("Choisissez un repas parmi " + dispo);
-    } while (!dispo.includes(leRepas));
+var seNourrir = function (leRepas) {
     var toPost = "/gaia/seNourrir/" + leRepas;
     $.post(toPost);
     setTimeout(function () {
