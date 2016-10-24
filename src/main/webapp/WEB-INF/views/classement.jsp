@@ -23,23 +23,39 @@
 
     <body>
         <c:import url="_menu.jsp"/>
+        
         <h1 id="titre">GAIA</h1>
         <br/>
+        
         <nav id="menu"></nav>
         <br/>
-        <div id="contenu"></div>
-        <c:set value="1" var="classement"/>
-        <table>
-            <c:forEach items="${lesJoueurs}" var="joueur">
+        
+        <div id="contenuClassement">
+            <c:set value="1" var="classement"/>
+            <table id="tabClassement">
                 <tr>
-                    <td>${classement}</td>
-                    <td>${joueur.login}</td>
-                    <td>${joueur.quantiteBle}</td>
+                    <td class="tdClassement">Classement</td>
+                    <td class="tdClassement">Pseudo</td>
+                    <td class="tdClassement">Quantité blé</td>
+                    <td class="tdClassement">Quantité Carotte</td>
+                    <td class="tdClassement">Quantité Fromage</td>
+                    <td class="tdClassement">Quantité Chèvre</td>
                 </tr>
-                <c:set value="${classement + 1}" var="classement"/>
-            </c:forEach>
-        </table>
+                <c:forEach items="${lesJoueurs}" var="joueur">
+                    <tr>
+                        <td class="tdClassement">${classement}</td>
+                        <td class="tdClassement">${joueur.login}</td>
+                        <td class="tdClassement">${joueur.quantiteBle}</td>
+                        <td class="tdClassement">${joueur.quantiteCarotte}</td>
+                        <td class="tdClassement">${joueur.quantiteFromage}</td>
+                        <td class="tdClassement">${fn:length(joueur.chevres)}</td>
+                    </tr>
+                    <c:set value="${classement + 1}" var="classement"/>
+                </c:forEach>
+            </table>
+        </div>
         <br/>
+        
         <footer id="pied">
             <c:import url="_pied.jsp"/>
         </footer>

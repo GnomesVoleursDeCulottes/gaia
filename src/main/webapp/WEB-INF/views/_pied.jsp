@@ -1,6 +1,5 @@
 <table id="piedPage">
     <tr>
-        
         <td></td>
         <td class="cellulePied">Scénario :</td>
         <td class="cellulePied">Thomas QUIQUOTTE</td>
