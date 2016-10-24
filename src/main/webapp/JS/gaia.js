@@ -59,7 +59,21 @@ var refresh = function () {
     }
 };
 
+
+
+var maBanque = function(stock){
+    
+   $("#banquier").load("/gaia/banque");
+    
+    
+};
+
+
+
+
 $(document).ready(function () {
 
     setInterval(refresh, 1000);
 });
+
+

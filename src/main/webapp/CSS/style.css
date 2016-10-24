@@ -181,8 +181,19 @@ footer{
     border: 3px double coral;  
 }
 
+/*** css de la banque ***/
 
+#echange{
+    margin: auto;
+    padding-top: 5%;
+}
 
+.traitBanque{
+    border: 3px double coral;  
+}
 
-
+.longueurCaseBanque{
+    width: 200px; 
+    margin: auto;
+}
 
