@@ -12,6 +12,15 @@ var planterBle = function (ble) {
     $("#plantation").load("/gaia/plantation");
 };
 
+var planterCarotte = function (carotte) {
+    var tmp = "/gaia/planterCarotte/" + carotte;
+    $.post(tmp);
+    setTimeout(function () {
+        $("#plantation").load("/gaia/plantation");
+        $("#stock").load("/gaia/ressource");
+    }, 100);
+};
+
 var nourrirChevre = function (chevre) {
     var nbANourrir;
     do {
@@ -35,16 +44,15 @@ var reproduction = function (nbChevre) {
     $("#materniter").load("/gaia/materniter");
 };
 
-var planterCarotte = function (carotte) {
-    var nbPlante;
+var seNourrir = function (dispo) {
+    var leRepas;
     do {
-        nbPlante = prompt("Combien de carotte(s) voulez vous planter? (max " + carotte + ")");
-    } while (nbPlante < 0 || nbPlante > carotte);
-    var tmp = "/gaia/planterCarotte/" + nbPlante;
-//    console.log(tmp);
-    $.post(tmp);
+        leRepas = prompt("Choisissez un repas parmi " + dispo);
+    } while (!dispo.includes(leRepas));
+    var toPost = "/gaia/seNourrir/" + leRepas;
+    $.post(toPost);
     $("#stock").load("/gaia/ressource");
-    $("#plantation").load("/gaia/plantation");
+    $("#sousMenu").load("/gaia/sous_menu");
 };
 
 var refresh = function () {
@@ -56,17 +64,6 @@ var refresh = function () {
         $("#plantation").load("/gaia/plantation");
         $("#materniter").load("/gaia/materniter");
     }
-};
-
-var seNourrir = function (dispo) {
-    var leRepas;
-    do {
-        leRepas = prompt("Choisissez un repas parmi " + dispo);
-    } while (!dispo.includes(leRepas));
-    var toPost = "/gaia/seNourrir/" + leRepas;
-    $.post(toPost);
-    $("#stock").load("/gaia/ressource");
-    $("#sousMenu").load("/gaia/sous_menu");
 };
 
 $(document).ready(function () {
