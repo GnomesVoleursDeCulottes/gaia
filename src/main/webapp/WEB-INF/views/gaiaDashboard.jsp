@@ -36,12 +36,17 @@
                 <h1 id="cycle"></h1>
 
 
-            <h2>Joueur : ${joueur.login}</h2>
+                <h2>Joueur : ${joueur.login}</h2>
 
             <br/>
 
             <div id="sousMenu">
-                
+
+            </div>
+
+            <br/>
+
+            <div id="banquier">
             </div>
 
             <table id="ligneVie">
@@ -51,15 +56,14 @@
                 </tr>
             </table>
 
-
             <div id="tableaux">
-                
+
                 <table id="stock">
                 </table>
 
                 <table id="plantation">
                 </table>
-                
+
                 <table id="materniter">
                 </table>
             </div>

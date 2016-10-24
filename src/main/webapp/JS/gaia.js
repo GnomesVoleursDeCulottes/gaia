@@ -71,5 +71,5 @@ var seNourrir = function (dispo) {
 
 $(document).ready(function () {
 
-    setInterval(refresh, 1000);
+    //setInterval(refresh, 1000);
 });
