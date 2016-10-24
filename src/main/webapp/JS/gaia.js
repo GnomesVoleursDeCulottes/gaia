@@ -60,29 +60,25 @@ var refresh = function () {
     }
 };
 
-
-
-var maBanque = function(stock){
-    
-   $("#banquier").load("/gaia/banque");
-    
-    
+var transaction = function (transa) {
+    console.log(transa);
+    var tmp = "/gaia/banque/" + transa;
+    $.post(tmp);
+    setTimeout(function () {
+        $("#stock").load("/gaia/ressource");
+        $("#sousMenu").load("/gaia/sous_menu");
+    }, 100);
 };
 
+var banque = function () {
+
+    $("#banquier").load("/gaia/banque");
 
 
-
-
-
+};
 
 $(document).ready(function () {
-
     setInterval(refresh, 1000);
-
-
-
-
-
 });
 
 
