@@ -26,7 +26,7 @@ public class LuneService {
     @Autowired
     private ChevreServiceCRUD serviceChevre;
 
-    @Scheduled(fixedDelay = 100000)
+    @Scheduled(fixedDelay = 40000)
     public void incrementeLune() {
         lune++;
         System.out.println("*** FIN LUNE : " + (lune - 1L) + " ***");
@@ -56,6 +56,7 @@ public class LuneService {
                 } else if (chevre.getProchainFromage() == lune) {
                     chevre.setProchainFromage(lune + 6L);
                     joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
+                    serviceChevre.save(chevre);
                 }
             }
             ////Naissance (sauf fromage)
