@@ -127,35 +127,20 @@ public class JoueurController {
         model.addAttribute("lune", serviceLune.getLune());
         model.addAttribute("prochainRepas",(4L-(joueur.getProchainRepas()-serviceLune.getLune())));
         model.addAttribute("affiche", serviceLune.getLune() == joueur.getProchainRepas());
-        String tab = "[";
-        boolean virgule = false;
+        String tab = "";
 
         if (joueur.getQuantiteBle() > 2) {
-            tab += "'ble'";
-            virgule = !virgule;
+            tab += "<input type=\"button\" value=\"Manger blé\" onclick=\"seNourrir('ble')\"/>\n";
         }
         if (joueur.getQuantiteCarotte() > 1) {
-            if (virgule) {
-                tab += ',';
-            }
-            tab += "'carotte'";
-            virgule = true;
+            tab += "<input type=\"button\" value=\"Manger carotte\" onclick=\"seNourrir('carotte')\"/>\n";
         }
         if (joueur.getQuantiteFromage() > 1) {
-            if (virgule) {
-                tab += ',';
-            }
-            tab += "'fromage'";
-            virgule = true;
+            tab += "<input type=\"button\" value=\"Manger fromage\" onclick=\"seNourrir('fromage')\"/>\n";
         }
         if (joueur.getChevres().size() > 0) {
-            if (virgule) {
-                tab += ',';
-            }
-            tab += "'chevre'";
+            tab += "<input type=\"button\" value=\"Manger chévre\" onclick=\"seNourrir('chevre')\"/>\n";
         }
-
-        tab += "]";
 
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
