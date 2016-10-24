@@ -22,8 +22,12 @@
     <td class="ressource traitRessource centre">Blé :</td>
     <td class="traitRessource centre">${joueur.quantiteBle}</td>
     <c:if test="${joueur.quantiteBle > 0}">
-        <td><input id="planterBle"  type="button" value="Planter" onclick="planterBle(${joueur.quantiteBle})"/></td>
-        </c:if>
+        <td>
+            <input id="ressourceBle" type="number" min="0" max="${joueur.quantiteBle}" value="0"/>
+            <input id="planterBle" type="button" value="Planter"  onclick="$(this).attr('disabled', true); planterBle($('#ressourceCarotte').val())" />
+            <input id="planterBleMax" type="button" value="Planter max" onclick="$(this).attr('disabled', true); planterBle(${joueur.quantiteBle})" />
+        </td>
+    </c:if>
 </tr>
 <tr>
     <td class="ressource traitRessource centre">Fromage :</td>
