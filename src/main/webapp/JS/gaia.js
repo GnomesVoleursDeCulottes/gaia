@@ -1,5 +1,6 @@
 var cycleAct = undefined;
 
+
 var planterBle = function (ble) {
     var nbPlante;
     do {
@@ -69,7 +70,15 @@ var seNourrir = function (dispo) {
     $("#sousMenu").load("/gaia/sous_menu");
 };
 
+
+
+
 $(document).ready(function () {
 
-    //setInterval(refresh, 1000);
+    setInterval(refresh, 1000);
+
+
+
+
+
 });

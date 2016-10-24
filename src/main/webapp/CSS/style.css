@@ -136,6 +136,10 @@ footer{
     width: 50%;
 }
 
+#barrePogressionJoueur{
+    margin: 15px;
+}
+
 .ressource{
     width: 400px;
 }
