@@ -59,10 +59,7 @@ var refresh = function () {
 
 
 var maBanque = function(stock){
-    
    $("#banquier").load("/gaia/banque");
-    
-    
 };
 
 

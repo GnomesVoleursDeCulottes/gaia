@@ -1,7 +1,7 @@
 <table id="echange" class="centre">
     <tr>
-        <td  class="traitBanque longueurCaseBanque">Ressource à échanger</td>
-      
+        <td  class="traitBanque longueurCaseBanque">Echange de ressource</td>
+
     </tr>
     <tr>
         <td id="quantiteAEchange" class="longueurCaseBanque">
@@ -10,6 +10,8 @@
                 <option value="echange2">Vous donnez 2 carottes et récupéré une chèvre</option>
             </select>
         </td>
+    </tr>
+    <tr>
         <td id="boutonEchange">
             <input type="button" value="Echanger"/>
         </td>
