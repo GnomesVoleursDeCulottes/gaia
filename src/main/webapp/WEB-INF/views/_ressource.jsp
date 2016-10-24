@@ -48,11 +48,11 @@
             <input id="nourrirChevreMax" type="button" value="Nourrir max" onclick="$(this).attr('disabled', true); nourrirChevre(${nbChevresPourManger })" />
         </td>
     </c:if>
-    <c:if test="${nbChevresReprod > 1}">
+    <c:if test="${nbChevresReprod > 0}">
         <td>
-            <input id="reprodChevreChoix" type="number" min="1" max="${nbChevresReprod }"/>
+            <input id="reprodChevreChoix" type="number" min="1" max="${nbChevresReprod}"/>
             <input id="reprodChevre" type="button" value="Reproduire"  onclick="$(this).attr('disabled', true); reproduction($('#reprodChevreChoix').val())" />
-            <input id="reprodChevreMax" type="button" value="Rerproduire" onclick="$(this).attr('disabled', true); reproduction(${nbChevresReprod})" />
+            <input id="reprodChevreMax" type="button" value="Reproduire max" onclick="$(this).attr('disabled', true); reproduction(${nbChevresReprod})" />
         </td>
     </c:if>
 
