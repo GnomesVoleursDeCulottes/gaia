@@ -46,9 +46,6 @@
 
             <br/>
 
-            <div id="banquier">
-            </div>
-
             <div id="tableaux">
 
                 <table id="stock">

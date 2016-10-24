@@ -120,6 +120,7 @@ footer{
     margin: auto;
     background-color: #4391d9;
     width: 80%;
+    padding-bottom: 50px;
 }
 
 #seNourrir, #nourrirChevre, #planterCarotte, #planterBle, #reproduction, #banque{
@@ -129,7 +130,6 @@ footer{
 
 #ligneVie{
     width: 100%;
-    height: 100px;
 }
 
 #ligneVieJoueur, #ligneVieMouton{
@@ -148,7 +148,6 @@ footer{
 
 #tableaux{
     background-color: #4391d9;
-    height: 500px;
 }
 
 #stock{
@@ -189,7 +188,11 @@ footer{
 
 #echange{
     margin: auto;
-    padding-top: 5%;
+    padding-top: 2%;
+}
+
+#boutonEchange, #quantiteAEchange{
+    padding-top: 2%;
 }
 
 .traitBanque{
