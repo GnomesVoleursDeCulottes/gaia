@@ -69,7 +69,21 @@ var seNourrir = function (dispo) {
     $("#sousMenu").load("/gaia/sous_menu");
 };
 
+
+
+var maBanque = function(stock){
+    
+   $("#banquier").load("/gaia/banque");
+    
+    
+};
+
+
+
+
 $(document).ready(function () {
 
-    //setInterval(refresh, 1000);
+    setInterval(refresh, 1000);
 });
+
+
