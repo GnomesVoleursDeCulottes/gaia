@@ -18,6 +18,10 @@
             <progress id="barrePogressionJoueur" value="${prochainRepas}" max="4"></progress>
         </td> 
 
+    <div id="banquier">
+        
+    </div>
+        
         <!-- Barre de vie des moutons --> 
         <td id="ligneVieMouton" class="centre"></td>  
     </tr>
