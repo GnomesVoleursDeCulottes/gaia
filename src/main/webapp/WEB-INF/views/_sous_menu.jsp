@@ -6,7 +6,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${affiche}">
-    <input id="seNourrir" type="button" value="Se nourrir" onclick="seNourrir(${dispo})"/>
+    ${dispo}
 </c:if>
 <input id="banque" type="button" value="Banque" />
 
