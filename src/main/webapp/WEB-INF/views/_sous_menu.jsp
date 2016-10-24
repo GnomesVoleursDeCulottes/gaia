@@ -8,7 +8,7 @@
 <c:if test="${affiche}">
     <input id="seNourrir" type="button" value="Se nourrir" onclick="seNourrir(${dispo})"/>
 </c:if>
-<input id="banque" type="button" value="Banque" />
+<input id="banque" type="button" value="Banque" onclick="banque()"/>
 
 <table id="ligneVie">
     <tr>    <!-- Barre de vie du joueur -->
