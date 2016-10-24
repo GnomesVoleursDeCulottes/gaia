@@ -94,12 +94,12 @@ public class JoueurController {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
         model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
-        model.addAttribute("nbChevresReprod", serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune()+1L));
+        model.addAttribute("nbChevresReprod", serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune() + 1L));
         return "_ressource.jsp";
     }
-    
+
     @RequestMapping(value = "/materniter", method = RequestMethod.GET)
-    public String materniter(Model model, HttpSession s){
+    public String materniter(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("chevreauxJoueur", service.findOne(joueur).getChevraux());
         return "_materniter.jsp";
@@ -108,11 +108,11 @@ public class JoueurController {
     @RequestMapping(value = "/plantation", method = RequestMethod.GET)
     public String plantation(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
-        model.addAttribute("ble",service.findOne(joueur).getBlePlante());
+        model.addAttribute("ble", service.findOne(joueur).getBlePlante());
         model.addAttribute("carotte", service.findOne(joueur).getCarottePlantee());
         return "_plantation.jsp";
     }
-    
+
     @RequestMapping(value = "/cycle", method = RequestMethod.GET)
     public String cycle(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
@@ -125,7 +125,7 @@ public class JoueurController {
         Long idUser = (Long) s.getAttribute("idUser");
         Joueur joueur = service.findOne(idUser);
         model.addAttribute("lune", serviceLune.getLune());
-        model.addAttribute("prochainRepas",(4L-(joueur.getProchainRepas()-serviceLune.getLune())));
+        model.addAttribute("prochainRepas", (4L - (joueur.getProchainRepas() - serviceLune.getLune())));
         model.addAttribute("affiche", serviceLune.getLune() == joueur.getProchainRepas());
         String tab = "[";
         boolean virgule = false;
@@ -160,24 +160,24 @@ public class JoueurController {
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
     }
-    
+
     @RequestMapping(value = "/reproduction/{nbBebe}", method = RequestMethod.POST)
     @ResponseBody
-    public String reproduction(HttpSession s, @PathVariable("nbBebe") Long nbBebe){
+    public String reproduction(HttpSession s, @PathVariable("nbBebe") Long nbBebe) {
         Long leJoueur = (Long) s.getAttribute("idUser");
         serviceLune.faireSeReproduire(leJoueur, nbBebe);
         return "";
     }
-    
-     @RequestMapping(value = "/nourrirChevre/{nbANourrir}", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/nourrirChevre/{nbANourrir}", method = RequestMethod.POST)
     @ResponseBody
     public String nourrirChevre(HttpSession s, @PathVariable("nbANourrir") Long nbANourrir) {
         Long leJoueur = (Long) s.getAttribute("idUser");
         serviceLune.nourrir(leJoueur, nbANourrir);
         return "";
-    
+
     }
-    
+
     @RequestMapping(value = "/seNourrir/{leRepas}", method = RequestMethod.POST)
     @ResponseBody
     public String seNourrir(HttpSession s, @PathVariable("leRepas") String leRepas) {
@@ -201,8 +201,8 @@ public class JoueurController {
         serviceLune.planterCarotte(leJoueur, nbPlante);
         return "";
     }
-    
-     @RequestMapping(value = "/banque", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/banque", method = RequestMethod.GET)
     public String banque(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         return "_banque.jsp";
