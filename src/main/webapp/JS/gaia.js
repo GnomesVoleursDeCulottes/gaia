@@ -19,26 +19,20 @@ var planterCarotte = function (carotte) {
 };
 
 var nourrirChevre = function (chevre) {
-    var nbANourrir;
-    do {
-        nbANourrir = prompt("Combien de chèvre(s) voulez vous nourrir? (max " + chevre + ")");
-
-
-    } while (nbANourrir < 0 || nbANourrir > chevre);
-    var tmp = "/gaia/nourrirChevre/" + nbANourrir;
+    var tmp = "/gaia/nourrirChevre/" + chevre;
     $.post(tmp);
-    $("#stock").load("/gaia/ressource");
+    setTimeout(function () {
+        $("#stock").load("/gaia/ressource");
+    }, 100);
 };
 
 var reproduction = function (nbChevre) {
-    var nbBebe;
-    do {
-        var nbBebe = prompt("Combien voulez-vous mettre de chevreaux au monde ?" + Math.floor(nbChevre / 2));
-    } while (nbBebe < 0 || nbBebe > Math.floor(nbChevre / 2));
-    var tmp = "/gaia/reproduction/" + nbBebe;
+    var tmp = "/gaia/reproduction/" + nbChevre;
     $.post(tmp);
-    $("#stock").load("/gaia/ressource");
-    $("#materniter").load("/gaia/materniter");
+    setTimeout(function () {
+        $("#stock").load("/gaia/ressource");
+        $("#materniter").load("/gaia/materniter");
+    }, 100);
 };
 
 var seNourrir = function (dispo) {
@@ -48,8 +42,10 @@ var seNourrir = function (dispo) {
     } while (!dispo.includes(leRepas));
     var toPost = "/gaia/seNourrir/" + leRepas;
     $.post(toPost);
-    $("#stock").load("/gaia/ressource");
-    $("#sousMenu").load("/gaia/sous_menu");
+    setTimeout(function () {
+        $("#stock").load("/gaia/ressource");
+        $("#sousMenu").load("/gaia/sous_menu");
+    }, 100);
 };
 
 var refresh = function () {
