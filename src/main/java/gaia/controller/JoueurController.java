@@ -200,4 +200,9 @@ public class JoueurController {
         return "";
     }
     
+     @RequestMapping(value = "/banque", method = RequestMethod.GET)
+    public String banque(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        return "_banque.jsp";
+    }
 }

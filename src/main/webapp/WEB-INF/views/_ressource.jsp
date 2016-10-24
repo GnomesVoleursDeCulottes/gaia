@@ -35,9 +35,8 @@
     </c:if>
     <c:if test="${nbChevresPourManger > 0}">
         <td><input id="nourrirChevre" type="button" value="Nourrir" onclick="nourrirChevre(${nbChevresPourManger})" /></td>
-    </c:if>
-    <c:if test="${nbChevresReprod > 1}">
+        </c:if>
+        <c:if test="${nbChevresReprod > 1}">
         <td><input id="reproduction" type="button" value="Reproduction" onclick="reproduction(${nbChevresReprod})"/></td>
-    </c:if>
-
+        </c:if>
 </tr>
