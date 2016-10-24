@@ -1,3 +1,5 @@
+var cycleAct = undefined;
+
 var planterBle = function (ble) {
     var nbPlante;
     do {
@@ -40,11 +42,14 @@ var planterCarotte = function (carotte) {
 };
 
 var refresh = function () {
-    $("#stock").load("/gaia/ressource");
     $("#cycle").load("/gaia/cycle");
-    $("#sousMenu").load("/gaia/sous_menu");
-    $("#plantation").load("/gaia/plantation");
-    $("#materniter").load("/gaia/materniter");
+    if ($("#cycleAct").html() != cycleAct) {
+        cycleAct = $("#cycleAct").html(); 
+        $("#stock").load("/gaia/ressource");
+        $("#sousMenu").load("/gaia/sous_menu");
+        $("#plantation").load("/gaia/plantation");
+        $("#materniter").load("/gaia/materniter");
+    }
 };
 
 var seNourrir = function (dispo) {
