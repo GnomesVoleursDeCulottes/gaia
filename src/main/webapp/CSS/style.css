@@ -136,6 +136,10 @@ footer{
     width: 50%;
 }
 
+#barrePogressionJoueur{
+    margin: 15px;
+}
+
 .ressource{
     width: 400px;
 }
@@ -196,4 +200,24 @@ footer{
     width: 200px; 
     margin: auto;
 }
+
+/*** css de la page de classement ***/
+
+#contenuClassement{
+    width: 100%;
+}
+
+#tabClassement{
+    text-align: center;
+    margin: auto;
+    background-color: #4391d9;
+}
+
+.tdClassement{
+    width: 200px;
+    padding: 20px;
+    border : solid 3px #CECECE;
+}
+
+
 

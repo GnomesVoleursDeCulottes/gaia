@@ -124,6 +124,8 @@ public class JoueurController {
     public String sousMenu(Model model, HttpSession s) {
         Long idUser = (Long) s.getAttribute("idUser");
         Joueur joueur = service.findOne(idUser);
+        model.addAttribute("lune", serviceLune.getLune());
+        model.addAttribute("prochainRepas",(4L-(joueur.getProchainRepas()-serviceLune.getLune())));
         model.addAttribute("affiche", serviceLune.getLune() == joueur.getProchainRepas());
         String tab = "[";
         boolean virgule = false;

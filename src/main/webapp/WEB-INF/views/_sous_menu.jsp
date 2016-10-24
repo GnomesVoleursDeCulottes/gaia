@@ -8,4 +8,16 @@
 <c:if test="${affiche}">
     <input id="seNourrir" type="button" value="Se nourrir" onclick="seNourrir(${dispo})"/>
 </c:if>
-    <input id="banque" type="button" value="Banque" onclick="maBanque(${stock})"/>
+<input id="banque" type="button" value="Banque" />
+
+<table id="ligneVie">
+    <tr>    <!-- Barre de vie du joueur -->
+        <td id="ligneVieJoueur" class="centre">le joueur doit se nourrir dans : 
+            <br/>
+            <progress id="barrePogressionJoueur" value="${prochainRepas}" max="4"></progress>
+        </td> 
+        
+            <!-- Barre de vie des moutons --> 
+        <td id="ligneVieMouton" class="centre"></td>  
+    </tr>
+</table>

@@ -49,13 +49,6 @@
             <div id="banquier">
             </div>
 
-            <table id="ligneVie">
-                <tr>
-                    <td id="ligneVieJoueur" class="centre"> ici l'homme vie</td>
-                    <td id="ligneVieMouton" class="centre"> ici le mouton vie</td> 
-                </tr>
-            </table>
-
             <div id="tableaux">
 
                 <table id="stock">
