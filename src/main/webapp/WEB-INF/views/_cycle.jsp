@@ -1,1 +1,1 @@
-Cycle de Lune : ${lune}
+Cycle de Lune : <span id="cycleAct">${lune}</span>
