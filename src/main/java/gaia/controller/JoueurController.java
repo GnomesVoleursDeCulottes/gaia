@@ -94,7 +94,7 @@ public class JoueurController {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
         model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
-        model.addAttribute("nbChevresReprod", serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune() + 1L));
+        model.addAttribute("nbChevresReprod", Math.floor(serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune() + 1L)/2));
         return "_ressource.jsp";
     }
 
