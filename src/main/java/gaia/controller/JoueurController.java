@@ -150,6 +150,7 @@ public class JoueurController {
     public String banque(Model model, HttpSession s) {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
+        model.addAttribute("nbChevres" ,serviceChevre.countByLeJoueurId(joueur));
         return "_banque.jsp";
     }
     
