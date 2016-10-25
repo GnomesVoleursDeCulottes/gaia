@@ -130,16 +130,16 @@ public class JoueurController {
         String tab = "";
 
         if (joueur.getQuantiteBle() > 2) {
-            tab += "<input type=\"button\" value=\"Manger blé\" onclick=\"seNourrir('ble')\"/>\n";
+            tab += "<input type=\"button\" value=\"Manger 3 blés\" onclick=\"seNourrir('ble')\"/>\n";
         }
         if (joueur.getQuantiteCarotte() > 1) {
-            tab += "<input type=\"button\" value=\"Manger carotte\" onclick=\"seNourrir('carotte')\"/>\n";
+            tab += "<input type=\"button\" value=\"Manger 2 carottes\" onclick=\"seNourrir('carotte')\"/>\n";
         }
         if (joueur.getQuantiteFromage() > 1) {
-            tab += "<input type=\"button\" value=\"Manger fromage\" onclick=\"seNourrir('fromage')\"/>\n";
+            tab += "<input type=\"button\" value=\"Manger 2 fromages\" onclick=\"seNourrir('fromage')\"/>\n";
         }
         if (joueur.getChevres().size() > 0) {
-            tab += "<input type=\"button\" value=\"Manger chévre\" onclick=\"seNourrir('chevre')\"/>\n";
+            tab += "<input type=\"button\" value=\"Manger 1 chévre\" onclick=\"seNourrir('chevre')\"/>\n";
         }
 
         model.addAttribute("dispo", tab);
