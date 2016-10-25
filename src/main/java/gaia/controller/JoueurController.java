@@ -5,6 +5,7 @@
  */
 package gaia.controller;
 
+import gaia.dto.MortDTO;
 import gaia.entity.Chevre;
 import gaia.entity.Joueur;
 import gaia.service.ChevreServiceCRUD;
@@ -37,6 +38,19 @@ public class JoueurController {
     @Autowired
     private LuneService serviceLune;
 
+    @RequestMapping(value = "/ajax_est_mort", method = RequestMethod.GET)
+    @ResponseBody
+    public MortDTO estMort(Model model, HttpSession s) {
+        
+        MortDTO dto = new MortDTO();
+        Joueur leJoueur = service.findOne((long)s.getAttribute("idUser"));
+        // SI mort alors dto.setMort = true sinon false
+        if (leJoueur.getProchainRepas()<serviceLune.getLune()) {
+            dto.setMort(true);
+        }
+        return dto;
+    }
+    
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String ajouterGET(Model model, HttpSession s) {
         if (s != null) {
@@ -45,6 +59,14 @@ public class JoueurController {
 
         model.addAttribute("JoueurAttr", new Joueur());
         return "index.jsp";
+    }
+    
+    @RequestMapping(value = "/mort", method = RequestMethod.GET)
+    public String deceder(HttpSession s){
+        Long joueur = (Long) s.getAttribute("idUser");
+        serviceChevre.deleteAllByLeJoueurId(joueur);
+        service.delete(joueur);
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
@@ -141,7 +163,7 @@ public class JoueurController {
         if (joueur.getChevres().size() > 0) {
             tab += "<input type=\"button\" value=\"Manger 1 chévre\" onclick=\"seNourrir('chevre')\"/>\n";
         }
-
+        
         model.addAttribute("dispo", tab);
         return "_sous_menu.jsp";
     }
@@ -202,4 +224,5 @@ public class JoueurController {
         
         return "";
     }
+   
 }
