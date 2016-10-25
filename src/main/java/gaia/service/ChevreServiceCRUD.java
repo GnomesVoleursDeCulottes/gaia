@@ -20,4 +20,5 @@ public interface ChevreServiceCRUD extends CrudRepository<Chevre, Long>{
     public long countByLeJoueurIdAndProchaineGestationLessThan(Long idJoueur, Long cycle);
     
     public void deleteAllByLeJoueurId(Long idjoueur);
+    public Long countByLeJoueurId(long idJoueur);
 }
