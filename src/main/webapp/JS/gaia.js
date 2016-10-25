@@ -53,6 +53,7 @@ var refresh = function () {
         $("#sousMenu").load("/gaia/sous_menu");
         $("#plantation").load("/gaia/plantation");
         $("#materniter").load("/gaia/materniter");
+        deces();
     }
 };
 
@@ -67,11 +68,16 @@ var transaction = function (transa) {
 };
 
 var banque = function () {
-
     $("#banquier").load("/gaia/banque");
-
-
 };
+
+var deces = function () {
+    $.getJSON('ajax_est_mort', function (data) {
+        if (data.mort == true) {
+            location.href = 'mort';
+        }
+    });
+}
 
 $(document).ready(function () {
     setInterval(refresh, 1000);
