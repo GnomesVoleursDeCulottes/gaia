@@ -94,7 +94,7 @@ public class JoueurController {
         Long joueur = (Long) s.getAttribute("idUser");
         model.addAttribute("joueur", service.findOne(joueur));
         model.addAttribute("chevrePourManger", serviceChevre.findAllByLeJoueurIdAndProchainRepas(joueur, serviceLune.getLune()));
-        model.addAttribute("nbChevresReprod", serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune() + 1L));
+        model.addAttribute("nbChevresReprod", Math.floor(serviceChevre.countByLeJoueurIdAndProchaineGestationLessThan(joueur, serviceLune.getLune() + 1L)/2));
         return "_ressource.jsp";
     }
 
@@ -146,6 +146,13 @@ public class JoueurController {
         return "_sous_menu.jsp";
     }
 
+    @RequestMapping(value = "/banque", method = RequestMethod.GET)
+    public String banque(Model model, HttpSession s) {
+        Long joueur = (Long) s.getAttribute("idUser");
+        model.addAttribute("joueur", service.findOne(joueur));
+        return "_banque.jsp";
+    }
+    
     @RequestMapping(value = "/reproduction/{nbBebe}", method = RequestMethod.POST)
     @ResponseBody
     public String reproduction(HttpSession s, @PathVariable("nbBebe") Long nbBebe) {
@@ -187,9 +194,12 @@ public class JoueurController {
         return "";
     }
 
-    @RequestMapping(value = "/banque", method = RequestMethod.GET)
-    public String banque(Model model, HttpSession s) {
-        Long joueur = (Long) s.getAttribute("idUser");
-        return "_banque.jsp";
+    @RequestMapping(value = "/banque/{transa}", method = RequestMethod.POST)
+    @ResponseBody
+    public String echange(HttpSession s, @PathVariable("transa") String transa) {
+        Long joueur = (long) s.getAttribute("idUser");
+        serviceLune.echange(joueur, transa);
+        
+        return "";
     }
 }

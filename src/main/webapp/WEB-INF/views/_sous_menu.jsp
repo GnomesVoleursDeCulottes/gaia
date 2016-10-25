@@ -9,11 +9,7 @@
 <c:if test="${affiche}">
     ${dispo}
 </c:if>
-
-<input id="banque" type="button" value="Banque" onclick="maBanque();"/>
-
-<div id="banquier">
-</div>
+<input id="banque" type="button" value="Banque" onclick="banque()"/>
 
 <table id="ligneVie">
     <tr>    <!-- Barre de vie du joueur -->
@@ -22,6 +18,10 @@
             <progress id="barrePogressionJoueur" value="${prochainRepas}" max="4"></progress>
         </td> 
 
+    <div id="banquier">
+        
+    </div>
+        
         <!-- Barre de vie des moutons --> 
         <td id="ligneVieMouton" class="centre"></td>  
     </tr>

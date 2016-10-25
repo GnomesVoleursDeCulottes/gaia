@@ -9,9 +9,14 @@ import gaia.entity.Chevre;
 import gaia.entity.Joueur;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Alert;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -125,7 +130,7 @@ public class LuneService {
 
         long i = 0;
         for (Chevre chevre : leJoueur.getChevres()) {
-            if (chevre.getProchaineGestation() <= lune && i < nbAFaireNaitre*2L) {
+            if (chevre.getProchaineGestation() <= lune && i < nbAFaireNaitre * 2L) {
                 chevre.setProchaineGestation(lune + 12L);
                 i++;
             }
@@ -186,5 +191,42 @@ public class LuneService {
         }
         leJoueur.setProchainRepas(lune + 4L);
         service.save(leJoueur);
+    }
+
+    public void echange(Long idJoueur, String echange) {
+
+        Joueur leJoueur = service.findOne(idJoueur);
+        
+        Chevre chevre;
+        switch (echange) {
+
+            case "blevschevre":
+
+                leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() - 4L);
+                chevre = new Chevre();
+                chevre.setLeJoueur(leJoueur);
+                chevre.setProchainAll(lune);
+                leJoueur.getChevres().add(chevre);
+                serviceChevre.save(chevre);
+                service.save(leJoueur);
+
+                break;
+
+            case "carottevschevre":
+
+                leJoueur.setQuantiteCarotte(leJoueur.getQuantiteCarotte() - 2L);
+                chevre = new Chevre();
+                chevre.setLeJoueur(leJoueur);
+                chevre.setProchainAll(lune);
+                leJoueur.getChevres().add(chevre);
+                serviceChevre.save(chevre);
+                service.save(leJoueur);
+                break;
+
+            default:
+
+                throw new RuntimeException("erreur , cet échange n'existe pas");
+        }
+
     }
 }
