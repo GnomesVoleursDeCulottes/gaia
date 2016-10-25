@@ -6,10 +6,14 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${affiche}">
-    ${dispo}
-</c:if>
+
 <input id="banque" type="button" value="Banque" onclick="banque()"/>
+
+<div id="banquier">
+    <!-- Sert a afficher le contenu de _banque.jsp, ne rien mettre -->
+</div>
+
+
 
 <table id="ligneVie">
     <tr>    <!-- Barre de vie du joueur -->
@@ -17,12 +21,12 @@
             <br/>
             <progress id="barrePogressionJoueur" value="${prochainRepas}" max="4"></progress>
         </td> 
-
-    <div id="banquier">
-        
-    </div>
-        
-        <!-- Barre de vie des moutons --> 
-        <td id="ligneVieMouton" class="centre"></td>  
+    </tr>
+    <tr>
+        <td>
+            <c:if test="${affiche}">
+                ${dispo}
+            </c:if>
+        </td>
     </tr>
 </table>
