@@ -53,47 +53,48 @@ public class LuneService {
             //Fin de partie
             if (joueur.getProchainRepas() < lune) {
                 ////?????
-            }
-            //Mort chévre + fromage
-            for (Chevre chevre : joueur.getChevres()) {
-                if (chevre.getProchainRepas() < lune) {
-                    toSup.add(chevre);
-                } else if (chevre.getProchainFromage() == lune) {
-                    chevre.setProchainFromage(lune + 6L);
-                    joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
-                    serviceChevre.save(chevre);
+            } else {
+                //Mort chévre + fromage
+                for (Chevre chevre : joueur.getChevres()) {
+                    if (chevre.getProchainRepas() < lune) {
+                        toSup.add(chevre);
+                    } else if (chevre.getProchainFromage() == lune) {
+                        chevre.setProchainFromage(lune + 6L);
+                        joueur.setQuantiteFromage(joueur.getQuantiteFromage() + 2L + (long) Math.floor(Math.random() * 2));
+                        serviceChevre.save(chevre);
+                    }
                 }
-            }
-            ////Naissance (sauf fromage)
-            //Recolte Blé
-            if (joueur.getBlePlante().containsKey(lune)) {
-                Long nouvelle = (long) Math.floor((joueur.getBlePlante().get(lune)) * (3d + Math.random()));
-                joueur.setQuantiteBle(joueur.getQuantiteBle() + nouvelle);
-                joueur.getBlePlante().remove(lune);
-            }
+                ////Naissance (sauf fromage)
+                //Recolte Blé
+                if (joueur.getBlePlante().containsKey(lune)) {
+                    Long nouvelle = (long) Math.floor((joueur.getBlePlante().get(lune)) * (3d + Math.random()));
+                    joueur.setQuantiteBle(joueur.getQuantiteBle() + nouvelle);
+                    joueur.getBlePlante().remove(lune);
+                }
 
-            //Recolte Carotte
-            if (joueur.getCarottePlantee().containsKey(lune)) {
-                Long nouvelle = (long) Math.floor((joueur.getCarottePlantee().get(lune)) * (2d + Math.random()));
-                joueur.setQuantiteCarotte(joueur.getQuantiteCarotte() + nouvelle);
-                joueur.getCarottePlantee().remove(lune);
-            }
-            //Maturation Chevraux
-            if (joueur.getChevraux().containsKey(lune)) {
-                for (long i = 0L; i < joueur.getChevraux().get(lune); i++) {
-                    Chevre nouvelleChevre = new Chevre();
-                    nouvelleChevre.setLeJoueur(joueur);
-                    nouvelleChevre.setProchainAll(lune);
-                    serviceChevre.save(nouvelleChevre);
-                    joueur.getChevres().add(nouvelleChevre);
+                //Recolte Carotte
+                if (joueur.getCarottePlantee().containsKey(lune)) {
+                    Long nouvelle = (long) Math.floor((joueur.getCarottePlantee().get(lune)) * (2d + Math.random()));
+                    joueur.setQuantiteCarotte(joueur.getQuantiteCarotte() + nouvelle);
+                    joueur.getCarottePlantee().remove(lune);
                 }
-                joueur.getChevraux().remove(lune);
-            }
-            //Pour éviter une erreur (supprimer un élément de la liste parcouru)
-            //corriger avec it ?
-            for (Chevre chevre : toSup) {
-                serviceChevre.delete(chevre);
-                joueur.getChevres().remove(chevre);
+                //Maturation Chevraux
+                if (joueur.getChevraux().containsKey(lune)) {
+                    for (long i = 0L; i < joueur.getChevraux().get(lune); i++) {
+                        Chevre nouvelleChevre = new Chevre();
+                        nouvelleChevre.setLeJoueur(joueur);
+                        nouvelleChevre.setProchainAll(lune);
+                        serviceChevre.save(nouvelleChevre);
+                        joueur.getChevres().add(nouvelleChevre);
+                    }
+                    joueur.getChevraux().remove(lune);
+                }
+                //Pour éviter une erreur (supprimer un élément de la liste parcouru)
+                //corriger avec it ?
+                for (Chevre chevre : toSup) {
+                    serviceChevre.delete(chevre);
+                    joueur.getChevres().remove(chevre);
+                }
             }
             service.save(joueur);
         }
@@ -196,7 +197,7 @@ public class LuneService {
     public void echange(Long idJoueur, String echange) {
 
         Joueur leJoueur = service.findOne(idJoueur);
-        
+
         Chevre chevre;
         switch (echange) {
 
