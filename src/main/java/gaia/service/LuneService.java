@@ -9,14 +9,9 @@ import gaia.entity.Chevre;
 import gaia.entity.Joueur;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.Alert;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -196,7 +191,7 @@ public class LuneService {
     public void echange(Long idJoueur, String echange) {
 
         Joueur leJoueur = service.findOne(idJoueur);
-        
+
         Chevre chevre;
         switch (echange) {
 
@@ -222,6 +217,20 @@ public class LuneService {
                 serviceChevre.save(chevre);
                 service.save(leJoueur);
                 break;
+
+            case "chevrevsble":
+
+                chevre = leJoueur.getChevres().remove(0);
+                serviceChevre.delete(chevre);
+                leJoueur.setQuantiteBle(leJoueur.getQuantiteBle() + 4L);
+                service.save(leJoueur);
+
+            case "chevrevscarotte":
+
+                chevre = leJoueur.getChevres().remove(0);
+                serviceChevre.delete(chevre);
+                leJoueur.setQuantiteCarotte(leJoueur.getQuantiteCarotte() + 2L);
+                service.save(leJoueur);
 
             default:
 
