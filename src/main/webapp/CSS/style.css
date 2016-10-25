@@ -130,6 +130,7 @@ footer{
 
 #ligneVie{
     width: 100%;
+    margin-top: 30px;
 }
 
 #ligneVieJoueur, #ligneVieMouton{
